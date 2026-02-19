@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us - Biolyse Pharma Corp.</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #ffffff;  /* Changed from #1a1a1a */
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.logo {
+    padding: 10px 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100px;  /* Adjust this number to make logo bigger/smaller */
+    width: auto;   /* Keeps aspect ratio */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: block;
+    padding: 20px 20px;
+    color: #333;  /* Changed from white */
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #f0f0f0;  /* Changed from #333 - light gray on hover */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;  /* Changed from #2a2a2a */
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border: 1px solid #e0e0e0;  /* Add a subtle border */
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;  /* Changed from white */
+    text-decoration: none;
+    border-bottom: 1px solid #e0e0e0;  /* Changed from #333 */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;  /* Changed from #444 */
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 600px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('images/about.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Page Content */
+.page-content {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* Section Styling */
+.about-section {
+    margin: 80px 0;
+    padding: 60px 0;
+    scroll-margin-top: 80px; /* Offset for sticky navbar */
+}
+
+.about-section:not(:last-child) {
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.section-header h2 {
+    font-size: 42px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.section-header .subtitle {
+    font-size: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+.section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.section-content.reverse {
+    direction: rtl;
+}
+
+.section-content.reverse > * {
+    direction: ltr;
+}
+
+.section-image {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.section-text {
+    padding: 20px;
+}
+
+.section-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.section-text ul {
+    list-style: none;
+    padding: 0;
+}
+
+.section-text ul li {
+    padding: 10px 0;
+    padding-left: 30px;
+    position: relative;
+    font-size: 18px;
+    color: #555;
+}
+
+.section-text ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #04481e;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Full Width Text Section */
+.full-width-text {
+    max-width: 900px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+.full-width-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+/* Timeline (for History section) */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 50px auto;
+}
+
+.timeline-item {
+    padding: 30px;
+    background: #f9f9f9;
+    border-left: 4px solid #04481e;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.timeline-item:hover {
+    transform: translateX(10px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.timeline-year {
+    font-size: 24px;
+    font-weight: bold;
+    color: #04481e;
+    margin-bottom: 10px;
+}
+
+.timeline-content {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+}
+
+/* Footer */
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-section a:hover {
+    color: #4a90e2;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .section-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .section-content.reverse {
+        direction: ltr;
+    }
+}
+
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: left;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        margin: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        border: none;
+        background-color: #f9f9f9;
+    }
+
+    .nav-item.dropdown-open .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        padding-left: 40px;
+        font-size: 14px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    /* Hero sections */
+    .hero {
+        height: 400px !important;
+    }
+
+    .hero h1 {
+        font-size: 32px !important;
+        padding: 0 20px;
+    }
+
+    .hero h2, .hero p {
+        font-size: 20px !important;
+        padding: 0 20px;
+    }
+
+    /* Content sections */
+    .section-header h2, .intro h2 {
+        font-size: 28px !important;
+    }
+
+    .section-header p, .intro p {
+        font-size: 16px !important;
+    }
+
+    /* Grids */
+    .features, .team-grid, .news-grid, .product-variants, .benefits-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-content, .section-content, .contact-grid, .product-header {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-content.reverse {
+        direction: ltr !important;
+    }
+
+    /* Department cards */
+    .department-card {
+        grid-template-columns: 1fr !important;
+    }
+
+    .department-image {
+        min-height: 200px;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* CTA */
+    .cta-section h2 {
+        font-size: 24px !important;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 16px !important;
+    }
+}
+
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.php" class="logo">
+                <img src="images/logo2.png" alt="Biolyse Logo">
+            </a>
+                        
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+<ul class="nav-menu" id="navMenu">
+                <li class="nav-item" data-dropdown>
+                    <a href="index.php" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <div class="dropdown-menu">
+                        <a href="#mission">Mission</a>
+                        <a href="#future">Future</a>
+                        <a href="#history">History</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#contract-manufacturing">Contract Manufacturing</a>
+                        <a href="services.html#research-and-development">Research and Development</a>
+                        <a href="services.html#capabilities">Capabilities</a>
+                        <a href="services.html#partnership">Partnership</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <div class="dropdown-menu">
+                        <a href="products.html#paclitaxel">Paclitaxel</a>
+                        <a href="products.html#docetaxel">Docetaxel</a>
+                        <a href="products.html#fluorouracil">Fluorouracil</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link">News and Careers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Meet Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>About Us</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="page-content">
+        
+        <!-- Mission Section -->
+        <section id="mission" class="about-section">
+            <div class="section-header">
+                <h2>Our Mission</h2>
+                <p class="subtitle">Advancing Cancer Care Through Innovation and Accessibility</p>
+            </div>
+
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="images/mission.jpg" alt="Mission" class="section-image img">
+                </div>
+                <div class="section-text">
+                    <p>Our mission is to ensure the continued distribution of our life-saving medicines while simultaneously pioneering innovative and effective treatments to enrich the lives of patients worldwide.</p>
+                    <p>At Biolyse, our name is our inspiration. Biolyse means "the separation of biological substances into their component parts". Using the techniques of isolation and purification, we have been producing naturally based medical products and chemical extracts of high quality and concentration for over twenty years.</p>
+                </div>
+            </div>
+
+            <div class="full-width-text">
+                <p>We believe that the objectives of the pharmaceutical industry should be simple: a dedication to science, and a desire to benefit humanity. While large pharmaceutical companies can sometimes lose sight of these objectives as scientific discovery takes a backseat to profitability, Biolyse maintains the ideals of simpler times.</p>
+                <p>Biolyse endeavors to provide quality products of the purest form, available to the consumer market at reasonable prices. We adhere to principles of ethics, hard work, and continual innovation at all levels of our company. We do not forget that our institution is based on the health of real people, whose well-being is more than important to us.</p>
+            </div>
+        </section>
+
+        <!-- Future Section -->
+        <section id="future" class="about-section">
+            <div class="section-header">
+                <h2>Our Future</h2>
+                <p class="subtitle">Expanding Horizons in Biologic Medications</p>
+            </div>
+
+            <div class="section-content reverse">
+                <div class="section-image">
+                    <img src="images/building.jpg" alt="Mission" class="section-image img">
+                </div>
+                <div class="section-text">
+                    <p>While we prioritize our licensed products, Biolyse Pharma is equally dedicated to advancing into the development of biologic medications. Committed to collaborating with the pharmaceutical industry, we strive to develop future products, processes, and services that benefit patients worldwide.</p>
+                    <p>Our biologics facility, presently in its last stage of completion, will expand our capabilities to produce large molecules such as:</p>
+                    <ul>
+                        <li>Monoclonal antibodies</li>
+                        <li>Therapeutic peptides</li>
+                        <li>Immunologic modulators</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="full-width-text">
+                <p>At Biolyse, we are committed to returning our profits back into continual research and development, in an effort to fight disease, and in the hope to help create a brighter tomorrow.</p>
+                <p>We recognize the importance of continued exploration to find valuable new natural compounds in place of more costly proprietary synthetic technologies. Biolyse extracts, concentrates and purifies natural bioactive compounds with a vision towards sustainable pharmaceutical development.</p>
+            </div>
+        </section>
+
+        <!-- History Section -->
+        <section id="history" class="about-section">
+            <div class="section-header">
+                <h2>Our History</h2>
+                <p class="subtitle">Two Decades of Innovation and Excellence</p>
+            </div>
+
+            <div class="full-width-text">
+                <p>Biolyse Pharma Corporation has been at the forefront of pharmaceutical innovation, dedicated to making life-saving cancer treatments accessible and affordable to patients worldwide.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1999</div>
+                    <div class="timeline-content">
+                        Biolyse located its head office in St. Catharines, Ontario, in the Niagara peninsula. Our proximity to Toronto, Buffalo and Chicago allows us to better meet the demands of international markets.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Early 2000s</div>
+                    <div class="timeline-content">
+                        Our main focus became the development of Paclitaxel for Injection, a chemotherapeutic treatment used in the fight against various forms of cancer. By concentrating on this one cancer medication and thoroughly investigating every aspect of its development, Biolyse manufactured Paclitaxel efficiently while maintaining a lower cost to our ultimate consumers — the cancer patients who so badly need it.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2005-2006</div>
+                    <div class="timeline-content">
+                        Exciting developments at Biolyse Pharma placed us at the forefront of the Canadian pharmaceutical industry in the fight against a possible influenza pandemic. Biolyse engineers developed a generic low-cost version of the anti-viral medication oseltamivir and secured a plentiful and stable supply of the active component within Canada.
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">Present Day</div>
+                    <div class="timeline-content">
+                        Today, Biolyse manufactures and distributes sterile injectable medicines to oncology centers nationally and internationally. We remain open to collaborations and committed to developing high-quality pharmaceuticals at an accessible cost. We continue expanding our product line while maintaining our commitment to quality, affordability, and patient well-being.
+                    </div>
+                </div>
+            </div>
+
+            <div class="full-width-text">
+                <p>Biolyse Pharma remains open to collaborations and committed to developing high-quality pharmaceuticals at an accessible cost. We believe that, by expanding our products and continually refining our unique methods of extraction and purification, we can provide solutions to a varied customer base.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Business Hours</h3>
+                <p>Monday – Friday<br>08:30AM – 05:30PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>59 Welland Vale rd.<br>St Catharines Ontario.<br>Canada L2S 3Y2</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Phone: (905) 687 8008<br>
+                Toll Free: 1 877 234 1880<br>
+                Fax: 905 687 4923<br>
+                Email: <a href="/cdn-cgi/l/email-protection#026b6c646d42606b6d6e7b71672c616d6f"><span class="__cf_email__" data-cfemail="533a3d353c13313a3c3f2a20367d303c3e">[email&#160;protected]</span></a></p>
+            </div>
+            <div class="footer-section">
+                <h3>More Links</h3>
+                <p><a href="#privacy">Privacy Policy</a></p>
+            </div>
+        </div>
+        

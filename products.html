@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Products - Biolyse Pharma Corp.</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #ffffff;  /* Changed from #1a1a1a */
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.logo {
+    padding: 10px 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100px;  /* Adjust this number to make logo bigger/smaller */
+    width: auto;   /* Keeps aspect ratio */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: block;
+    padding: 20px 20px;
+    color: #333;  /* Changed from white */
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #f0f0f0;  /* Changed from #333 - light gray on hover */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;  /* Changed from #2a2a2a */
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border: 1px solid #e0e0e0;  /* Add a subtle border */
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;  /* Changed from white */
+    text-decoration: none;
+    border-bottom: 1px solid #e0e0e0;  /* Changed from #333 */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;  /* Changed from #444 */
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 600px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('images/products.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero .contact-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: #04481e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 15px;
+    transition: background-color 0.3s;
+}
+
+.hero .contact-btn:hover {
+    background-color: #023114;
+}
+
+/* Page Content */
+.page-content {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.intro-section {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.intro-section h2 {
+    font-size: 36px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Product Section */
+.product-section {
+    margin: 80px 0;
+    padding: 60px 0;
+    border-top: 2px solid #e0e0e0;
+    scroll-margin-top: 80px; /* Offset for sticky navbar */
+}
+
+.product-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.product-image {
+    width: 100%;
+    height: 350px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+    overflow: hidden;        /* Add this - keeps image in bounds */
+}
+
+.product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.product-info h2 {
+    font-size: 32px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.product-links {
+    margin: 20px 0;
+}
+
+.product-links a {
+    display: inline-block;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    background-color: #04481e;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.product-links a:hover {
+    background-color: #023114;
+}
+
+/* Product Variants */
+.product-variants {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.variant-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.variant-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.variant-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+}
+
+.variant-details {
+    padding: 25px;
+}
+
+.variant-details h3 {
+    font-size: 20px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.variant-specs {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.variant-specs tr {
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.variant-specs td {
+    padding: 10px 0;
+}
+
+.variant-specs td:first-child {
+    font-weight: bold;
+    color: #555;
+}
+
+/* Footer */
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-section a:hover {
+    color: #4a90e2;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #888;
+}
+
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: left;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        margin: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        border: none;
+        background-color: #f9f9f9;
+    }
+
+    .nav-item.dropdown-open .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        padding-left: 40px;
+        font-size: 14px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    /* Hero sections */
+    .hero {
+        height: 400px !important;
+    }
+
+    .hero h1 {
+        font-size: 32px !important;
+        padding: 0 20px;
+    }
+
+    .hero h2, .hero p {
+        font-size: 20px !important;
+        padding: 0 20px;
+    }
+
+    /* Content sections */
+    .section-header h2, .intro h2 {
+        font-size: 28px !important;
+    }
+
+    .section-header p, .intro p {
+        font-size: 16px !important;
+    }
+
+    /* Grids */
+    .features, .team-grid, .news-grid, .product-variants, .benefits-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-content, .section-content, .contact-grid, .product-header {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-content.reverse {
+        direction: ltr !important;
+    }
+
+    /* Department cards */
+    .department-card {
+        grid-template-columns: 1fr !important;
+    }
+
+    .department-image {
+        min-height: 200px;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* CTA */
+    .cta-section h2 {
+        font-size: 24px !important;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 16px !important;
+    }
+}
+
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.php" class="logo">
+                <img src="images/logo2.png" alt="Biolyse Logo">
+            </a>
+                        
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+<ul class="nav-menu" id="navMenu">
+                <li class="nav-item" data-dropdown>
+                    <a href="index.php" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <div class="dropdown-menu">
+                        <a href="about.html#mission">Mission</a>
+                        <a href="about.html#future">Future</a>
+                        <a href="about.html#history">History</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#contract-manufacturing">Contract Manufacturing</a>
+                        <a href="services.html#research-and-development">Research and Development</a>
+                        <a href="services.html#capabilities">Capabilities</a>
+                        <a href="services.html#partnership">Partnership</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <div class="dropdown-menu">
+                        <a href="#paclitaxel">Paclitaxel</a>
+                        <a href="#docetaxel">Docetaxel</a>
+                        <a href="#fluorouracil">Fluorouracil</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link">News and Careers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Meet Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Products</h1>
+            <a href="contact.html" class="contact-btn">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="page-content">
+        <!-- Introduction -->
+        <div class="intro-section">
+            <h2>Innovative Cancer Treatment Solutions</h2>
+            <p>Welcome to Biolyse Pharma Corp., a leading pharmaceutical company dedicated to advancing cancer care worldwide. Our commitment to excellence is reflected in our range of innovative products designed to meet the needs of healthcare providers and patients alike.</p>
+        </div>
+
+        <!-- Paclitaxel Section -->
+        <section id="paclitaxel" class="product-section">
+            <div class="product-header">
+                <div class="product-image">
+                    <img src="images/pacli.jpg" alt="Paclitaxel" class="product-image img">
+                </div>
+                <div class="product-info">
+                    <h2>Paclitaxel for Injection 6mg/mL</h2>
+                    <div class="product-links">
+                        <a href="pdfs/PACLITAXEL/PACLITAXEL_MONOGRAPH_ENG.pdf" target="_blank">Product Monograph</a>
+                        <a href="pdfs/PACLITAXEL/Pacli_SDS.pdf" target="_blank">SDS</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-variants">
+                <!-- 30 mg/5 ml -->
+                <div class="variant-card">
+                    <div class="variant-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                        <img src="images/pacli.jpg" alt="Paclitaxel" class="variant-image">
+                    </div>
+                    <div class="variant-details">
+                        <h3>30 mg/5 ml</h3>
+                        <table class="variant-specs">
+                            <tr>
+                                <td>BRAND NAME</td>
+                                <td>Paclitaxel for Injection</td>
+                            </tr>
+                            <tr>
+                                <td>STRENGTH</td>
+                                <td>30 mg/5 ml</td>
+                            </tr>
+                            <tr>
+                                <td>SIZE</td>
+                                <td>10 vials pack</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 100 mg/16.7 ml -->
+                <div class="variant-card">
+                    <div class="variant-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                        <img src="images/pacli.jpg" alt="Paclitaxel" class="variant-image">
+                    </div>
+                    <div class="variant-details">
+                        <h3>100 mg/16.7 ml</h3>
+                        <table class="variant-specs">
+                            <tr>
+                                <td>BRAND NAME</td>
+                                <td>Paclitaxel for Injection</td>
+                            </tr>
+                            <tr>
+                                <td>STRENGTH</td>
+                                <td>100 mg/16.7 ml</td>
+                            </tr>
+                            <tr>
+                                <td>SIZE</td>
+                                <td>5 vials pack</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 300 mg/50 ml -->
+                <div class="variant-card">
+                    <div class="variant-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                        <img src="images/pacli.jpg" alt="Paclitaxel" class="variant-image">
+                    </div>
+                    <div class="variant-details">
+                        <h3>300 mg/50 ml</h3>
+                        <table class="variant-specs">
+                            <tr>
+                                <td>BRAND NAME</td>
+                                <td>Paclitaxel for Injection</td>
+                            </tr>
+                            <tr>
+                                <td>STRENGTH</td>
+                                <td>300 mg/50 ml</td>
+                            </tr>
+                            <tr>
+                                <td>SIZE</td>
+                                <td>4 vials pack</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Docetaxel Section -->
+        <section id="docetaxel" class="product-section">
+            <div class="product-header">
+                <div class="product-image">
+                    <img src="images/doce.jpg" alt="Docetaxel" class="product-image img">
+                </div>
+                <div class="product-info">
+                    <h2>Docetaxel Injection USP 20mg/mL</h2>
+                    <div class="product-links">
+                        <a href="pdfs/DOCETAXEL/Docetaxel_English_Monograh_2025.pdf" target="_blank">Product English Monograph</a>
+                        <a href="pdfs/DOCETAXEL/Docetaxel_SDS.pdf" target="_blank">SDS</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-variants">
+                <!-- 20 mg/1 ml -->
+                <div class="variant-card">
+                    <div class="variant-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                        <img src="images/doce.jpg" alt="Paclitaxel" class="variant-image">
+                    </div>
+                    <div class="variant-details">
+                        <h3>20 mg/1 ml</h3>
+                        <table class="variant-specs">
+                            <tr>
+                                <td>BRAND NAME</td>
+                                <td>Docetaxel Injection</td>
+                            </tr>
+                            <tr>
+                                <td>STRENGTH</td>
+                                <td>20 mg/1 ml</td>
+                            </tr>
+                            <tr>
+                                <td>SIZE</td>
+                                <td>10 vials pack</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 80 mg/4 ml -->
+                <div class="variant-card">
+                    <div class="variant-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);">
+                        <img src="images/doce.jpg" alt="Paclitaxel" class="variant-image">
+                    </div>
+                    <div class="variant-details">
+                        <h3>80 mg/4 ml</h3>
+                        <table class="variant-specs">
+                            <tr>
+                                <td>BRAND NAME</td>
+                                <td>Docetaxel Injection</td>
+                            </tr>
+                            <tr>
+                                <td>STRENGTH</td>
+                                <td>80 mg/4 ml</td>
+                            </tr>
+                            <tr>
+                                <td>SIZE</td>
+                                <td>10 vials pack</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 160 mg/8 ml -->
+                <div class="variant-card">
+                    <div class="variant-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                        <img src="images/doce.jpg" alt="Paclitaxel" class="variant-image">
+                    </div>
+                    <div class="variant-details">
+                        <h3>160 mg/8 ml</h3>
+                        <table class="variant-specs">
+                            <tr>
+                                <td>BRAND NAME</td>
+                                <td>Docetaxel Injection</td>
+                            </tr>
+                            <tr>
+                                <td>STRENGTH</td>
+                                <td>160 mg/8 ml</td>
+                            </tr>
+                            <tr>
+                                <td>SIZE</td>
+                                <td>5 vials pack</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fluorouracil Section -->
+        <section id="fluorouracil" class="product-section">
+            <div class="product-header">
+                <div class="product-image">
+                    <img src="images/fluoro.jpg" alt="Fluoro" class="product-image img">
+                </div>
+                <div class="product-info">
+                    <h2>Fluorouracil Injection USP 50mg/mL</h2>
+                    <div class="product-links">
+                        <a href="pdfs/FLUOROURACIL/FLUOROURACIL_MONOGRAPH_ENG.pdf" target="_blank">Product English Monograph</a>
+                        <a href="pdfs/FLUOROURACIL/FLUOROURACIL_MONOGRAPH_FR.pdf" target="_blank">Product French Monograph</a>
+                        <a href="pdfs/FLUOROURACIL/Fluorouracil_Injection_SDS.pdf" target="_blank">SDS</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-variants">
+                <!-- 0.5 g/10 ml -->
+                <div class="variant-card">
+                    <div class="variant-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                        <img src="images/fluoro.jpg" alt="Paclitaxel" class="variant-image">
+                    </div>
+                    <div class="variant-details">
+                        <h3>0.5 g/10 ml</h3>
+                        <table class="variant-specs">
+                            <tr>
+                                <td>BRAND NAME</td>
+                                <td>Fluorouracil Injection</td>
+                            </tr>
+                            <tr>
+                                <td>STRENGTH</td>
+                                <td>0.5 g/10 ml</td>
+                            </tr>
+                            <tr>
+                                <td>SIZE</td>
+                                <td>10 vials pack</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 5 g/100 ml -->
+                <div class="variant-card">
+                    <div class="variant-image" style="background: linear-gradient(135deg, #c471f5 0%, #fa71cd 100%);">
+                        <img src="images/fluoro.jpg" alt="Paclitaxel" class="variant-image">
+                    </div>
+                    <div class="variant-details">
+                        <h3>5 g/100 ml</h3>
+                        <table class="variant-specs">
+                            <tr>
+                                <td>BRAND NAME</td>
+                                <td>Fluorouracil Injection</td>
+                            </tr>
+                            <tr>
+                                <td>STRENGTH</td>
+                                <td>5 g/100 ml</td>
+                            </tr>
+                            <tr>
+                                <td>SIZE</td>
+                                <td>1 vial pack</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closing Statement -->
+        <div class="intro-section" style="margin-top: 80px;">
+            <p>At Biolyse Pharma Corp., we are committed to providing healthcare providers and patients with high-quality cancer treatment options. Contact us to learn more about our products and how they can benefit your patients.</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Business Hours</h3>
+                <p>Monday – Friday<br>08:30AM – 05:30PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>59 Welland Vale rd.<br>St Catharines Ontario.<br>Canada L2S 3Y2</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Phone: (905) 687 8008<br>
+                Toll Free: 1 877 234 1880<br>
+                Fax: 905 687 4923<br>
+                Email: <a href="/cdn-cgi/l/email-protection#a7cec9c1c8e7c5cec8cbded4c289c4c8ca"><span class="__cf_email__" data-cfemail="84edeae2ebc4e6edebe8fdf7e1aae7ebe9">[email&#160;protected]</span></a></p>
+            </div>
+            <div class="footer-section">
+                <h3>More Links</h3>
+                <p><a href="#privacy">Privacy Policy</a></p>
+            </div>
+        </div>
+        

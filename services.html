@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services - Biolyse Pharma Corp.</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #ffffff;  /* Changed from #1a1a1a */
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.logo {
+    padding: 10px 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100px;  /* Adjust this number to make logo bigger/smaller */
+    width: auto;   /* Keeps aspect ratio */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: block;
+    padding: 20px 20px;
+    color: #333;  /* Changed from white */
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #f0f0f0;  /* Changed from #333 - light gray on hover */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;  /* Changed from #2a2a2a */
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border: 1px solid #e0e0e0;  /* Add a subtle border */
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;  /* Changed from white */
+    text-decoration: none;
+    border-bottom: 1px solid #e0e0e0;  /* Changed from #333 */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;  /* Changed from #444 */
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 600px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                url('images/services.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Page Content */
+.page-content {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* Intro Section */
+.intro-section {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.intro-section h2 {
+    font-size: 36px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
+
+/* Service Section */
+.service-section {
+    margin: 80px 0;
+    padding: 60px 0;
+    scroll-margin-top: 80px;
+}
+
+.service-section:not(:last-child) {
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.service-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.service-header h2 {
+    font-size: 42px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.service-header p {
+    font-size: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+.service-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.service-content.reverse {
+    direction: rtl;
+}
+
+.service-content.reverse > * {
+    direction: ltr;
+}
+
+.service-image {
+    width: 100%;
+    height: 400px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 8px;
+}
+
+.service-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.service-text {
+    padding: 20px;
+}
+
+.service-text h3 {
+    font-size: 28px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.service-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.service-text ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.service-text ul li {
+    padding: 12px 0;
+    padding-left: 35px;
+    position: relative;
+    font-size: 18px;
+    color: #555;
+}
+
+.service-text ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #04481e;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* Feature Grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 22px;
+    color: #04481e;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* Call to Action */
+.cta-section {
+    background: linear-gradient(135deg, #04481e 0%, #04481e 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    margin: 80px 0;
+    border-radius: 8px;
+}
+
+.cta-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: white;
+    color: #04481e;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-section a:hover {
+    color: #4a90e2;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-content.reverse {
+        direction: ltr;
+    }
+}
+
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: left;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        margin: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        border: none;
+        background-color: #f9f9f9;
+    }
+
+    .nav-item.dropdown-open .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        padding-left: 40px;
+        font-size: 14px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    /* Hero sections */
+    .hero {
+        height: 400px !important;
+    }
+
+    .hero h1 {
+        font-size: 32px !important;
+        padding: 0 20px;
+    }
+
+    .hero h2, .hero p {
+        font-size: 20px !important;
+        padding: 0 20px;
+    }
+
+    /* Content sections */
+    .section-header h2, .intro h2 {
+        font-size: 28px !important;
+    }
+
+    .section-header p, .intro p {
+        font-size: 16px !important;
+    }
+
+    /* Grids */
+    .features, .team-grid, .news-grid, .product-variants, .benefits-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-content, .section-content, .contact-grid, .product-header {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-content.reverse {
+        direction: ltr !important;
+    }
+
+    /* Department cards */
+    .department-card {
+        grid-template-columns: 1fr !important;
+    }
+
+    .department-image {
+        min-height: 200px;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* CTA */
+    .cta-section h2 {
+        font-size: 24px !important;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 16px !important;
+    }
+}
+
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.php" class="logo">
+                <img src="images/logo2.png" alt="Biolyse Logo">
+            </a>
+                        
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+<ul class="nav-menu" id="navMenu">
+                <li class="nav-item" data-dropdown>
+                    <a href="index.php" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <div class="dropdown-menu">
+                        <a href="about.html#mission">Mission</a>
+                        <a href="about.html#future">Future</a>
+                        <a href="about.html#history">History</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <div class="dropdown-menu">
+                        <a href="#contract-manufacturing">Contract Manufacturing</a>
+                        <a href="#research-and-development">Research and Development</a>
+                        <a href="#capabilities">Capabilities</a>
+                        <a href="#partnership">Partnership</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <div class="dropdown-menu">
+                        <a href="products.html#paclitaxel">Paclitaxel</a>
+                        <a href="products.html#docetaxel">Docetaxel</a>
+                        <a href="products.html#fluorouracil">Fluorouracil</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link">News and Careers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Meet Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Services</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="page-content">
+        
+        <!-- Introduction -->
+        <div class="intro-section">
+            <h2>Contributing to Health Care Advancements</h2>
+            <p>With a focus on innovation and excellence, we are committed to providing high-quality services to our clients and partners.</p>
+            <p>Biolyse Pharma Corp. has extensive experience in the development of new and generic therapeutics and can streamline the complexities of drug development endeavors. By entrusting us with your projects, you can expect efficient solutions that not only save you valuable time and resources but also expedite your journey to bringing your products to market.</p>
+            <p>Within our facility are amenities dedicated to research and development. Analytical laboratories and multiple manufacturing suites ensure the utmost control from bench scale to commercial level manufacturing.</p>
+        </div>
+
+        <!-- Contract Manufacturing Section -->
+        <section id="contract-manufacturing" class="service-section">
+            <div class="service-header">
+                <h2>Contract Manufacturing</h2>
+                <p>Precision Manufacturing for Pharmaceutical Excellence</p>
+            </div>
+
+            <div class="service-content">
+                <div class="service-image">
+                    <img src="images/building.jpg" alt="Mission" class="service-image img">
+                </div>
+                <div class="service-text">
+                    <h3>State-of-the-Art Manufacturing</h3>
+                    <p>Biolyse Pharma Corp. offers comprehensive contract manufacturing services for sterile injectable medicines. Our facilities are equipped with cutting-edge technology and operated by highly skilled professionals.</p>
+                    <p>We provide end-to-end manufacturing solutions, from formulation development to commercial production, ensuring the highest quality standards at every step.</p>
+                    <ul>
+                        <li>cGMP-compliant manufacturing facilities</li>
+                        <li>Sterile injectable production capabilities</li>
+                        <li>Scalable from bench to commercial manufacturing</li>
+                        <li>Quality assurance and regulatory compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Research and Development Section -->
+        <section id="research-and-development" class="service-section">
+            <div class="service-header">
+                <h2>Research and Development</h2>
+                <p>Innovation Driving Tomorrow's Treatments</p>
+            </div>
+
+            <div class="service-content reverse">
+                <div class="service-image">
+                    <img src="images/building.jpg" alt="Mission" class="service-image img">
+                </div>
+                <div class="service-text">
+                    <h3>Cutting-Edge R&D Capabilities</h3>
+                    <p>Our research and development team is dedicated to advancing pharmaceutical science through innovative approaches to drug development. We specialize in both new and generic therapeutic development.</p>
+                    <p>With state-of-the-art analytical laboratories and experienced scientists, we can streamline the complexities of drug development and accelerate time to market.</p>
+                    <ul>
+                        <li>Formulation development and optimization</li>
+                        <li>Analytical method development and validation</li>
+                        <li>Stability studies and testing</li>
+                        <li>Process development and scale-up</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Capabilities Section -->
+        <section id="capabilities" class="service-section">
+            <div class="service-header">
+                <h2>Our Capabilities</h2>
+                <p>Comprehensive Solutions from Concept to Market</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Analytical Testing</h3>
+                    <p>Advanced analytical laboratories equipped for comprehensive testing including HPLC, GC, and spectroscopy.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">⚗️</div>
+                    <h3>Formulation Development</h3>
+                    <p>Expert formulation scientists developing innovative solutions for complex pharmaceutical challenges.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏭</div>
+                    <h3>Manufacturing Suites</h3>
+                    <p>Multiple manufacturing suites providing control from bench scale to commercial level production.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Quality Control</h3>
+                    <p>Rigorous quality control systems ensuring products meet the highest international standards.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Regulatory Support</h3>
+                    <p>Comprehensive regulatory expertise to navigate complex approval processes efficiently.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🧪</div>
+                    <h3>Stability Studies</h3>
+                    <p>Full-service stability testing programs supporting product development and registration.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partnership Section -->
+        <section id="partnership" class="service-section">
+            <div class="service-header">
+                <h2>Partnership Opportunities</h2>
+                <p>Collaborating for Global Health Impact</p>
+            </div>
+
+            <div class="service-content">
+                <div class="service-image">
+                    <img src="images/building.jpg" alt="Mission" class="service-image img">
+                </div>
+                <div class="service-text">
+                    <h3>Strategic Collaboration</h3>
+                    <p>Biolyse Pharma Corp. values collaboration and partnership. We are always looking for new partners who share our commitment to excellence and innovation in pharmaceutical development.</p>
+                    <p>Whether you're a pharmaceutical company, research institution, or healthcare organization, we offer flexible partnership models tailored to your specific needs.</p>
+                    <ul>
+                        <li>Co-development agreements</li>
+                        <li>Technology transfer partnerships</li>
+                        <li>Distribution and licensing opportunities</li>
+                        <li>Research collaborations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="service-text" style="max-width: 900px; margin: 50px auto 0; text-align: center;">
+                <p>We recognize the importance of continued exploration to find valuable new natural compounds in place of more costly proprietary synthetic technologies. Biolyse extracts, concentrates and purifies natural bioactive compounds with a vision towards sustainable pharmaceutical development.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Call to Action -->
+    <div class="page-content">
+        <div class="cta-section">
+            <h2>Explore our pharmaceutical services and partner with us for innovative healthcare solutions today!</h2>
+            <p>Contact our team to discuss how we can support your pharmaceutical development needs.</p>
+            <a href="contact.html" class="cta-button">Get in Touch</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Business Hours</h3>
+                <p>Monday – Friday<br>08:30AM – 05:30PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>59 Welland Vale rd.<br>St Catharines Ontario.<br>Canada L2S 3Y2</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Phone: (905) 687 8008<br>
+                Toll Free: 1 877 234 1880<br>
+                Fax: 905 687 4923<br>
+                Email: <a href="/cdn-cgi/l/email-protection#345d5a525b74565d5b584d47511a575b59"><span class="__cf_email__" data-cfemail="3a53545c557a5853555643495f14595557">[email&#160;protected]</span></a></p>
+            </div>
+            <div class="footer-section">
+                <h3>More Links</h3>
+                <p><a href="#privacy">Privacy Policy</a></p>
+            </div>
+        </div>
+        

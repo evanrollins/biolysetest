@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Biolyse Pharma Corp.</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #ffffff;  /* Changed from #1a1a1a */
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.logo {
+    padding: 10px 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100px;  /* Adjust this number to make logo bigger/smaller */
+    width: auto;   /* Keeps aspect ratio */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: block;
+    padding: 20px 20px;
+    color: #333;  /* Changed from white */
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #f0f0f0;  /* Changed from #333 - light gray on hover */
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;  /* Changed from #2a2a2a */
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border: 1px solid #e0e0e0;  /* Add a subtle border */
+}
+
+.nav-item:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;  /* Changed from white */
+    text-decoration: none;
+    border-bottom: 1px solid #e0e0e0;  /* Changed from #333 */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;  /* Changed from #444 */
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 600px;
+    background: linear-gradient(rgba(2, 49, 20, 1), rgba(2,49,20,1)), 
+                url('https://via.placeholder.com/1600x400/2c5aa0/ffffff?text=Contact+Us') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+h1 a {
+    color: inherit;
+    text-decoration: none;
+}
+
+h1 a:hover {
+    text-decoration: underline;
+}
+
+/* Page Content */
+.page-content {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* Contact Grid */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+}
+
+/* Contact Form */
+.contact-form-section h2 {
+    font-size: 32px;
+    color: #04481e;
+    margin-bottom: 10px;
+}
+
+.contact-form-section p {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
+
+.contact-form {
+    background: #f9f9f9;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #04481e;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.submit-btn {
+    background-color: #04481e;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #023114;
+    transform: translateY(-2px);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+/* Contact Info */
+.contact-info h2 {
+    font-size: 32px;
+    color: #04481e;
+    margin-bottom: 30px;
+}
+
+.info-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+
+.info-card h3 {
+    font-size: 20px;
+    color: #04481e;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.info-card h3:before {
+    content: "📍";
+    margin-right: 10px;
+    font-size: 24px;
+}
+
+.info-card.phone h3:before {
+    content: "📞";
+}
+
+.info-card.email h3:before {
+    content: "✉️";
+}
+
+.info-card.hours h3:before {
+    content: "🕐";
+}
+
+.info-card p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.info-card a {
+    color: #04481e;
+    text-decoration: none;
+}
+
+.info-card a:hover {
+    text-decoration: underline;
+}
+
+/* Map Section */
+.map-section {
+    margin: 60px 0;
+}
+
+.map-section h2 {
+    font-size: 32px;
+    color: #04481e;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.map-container {
+    width: 100%;
+    height: 450px;
+    background: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Footer */
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #4a90e2;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-section a:hover {
+    color: #4a90e2;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #888;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: left;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        margin: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        border: none;
+        background-color: #f9f9f9;
+    }
+
+    .nav-item.dropdown-open .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        padding-left: 40px;
+        font-size: 14px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    /* Hero sections */
+    .hero {
+        height: 400px !important;
+    }
+
+    .hero h1 {
+        font-size: 32px !important;
+        padding: 0 20px;
+    }
+
+    .hero h2, .hero p {
+        font-size: 20px !important;
+        padding: 0 20px;
+    }
+
+    /* Content sections */
+    .section-header h2, .intro h2 {
+        font-size: 28px !important;
+    }
+
+    .section-header p, .intro p {
+        font-size: 16px !important;
+    }
+
+    /* Grids */
+    .features, .team-grid, .news-grid, .product-variants, .benefits-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-content, .section-content, .contact-grid, .product-header {
+        grid-template-columns: 1fr !important;
+    }
+
+    .service-content.reverse {
+        direction: ltr !important;
+    }
+
+    /* Department cards */
+    .department-card {
+        grid-template-columns: 1fr !important;
+    }
+
+    .department-image {
+        min-height: 200px;
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* CTA */
+    .cta-section h2 {
+        font-size: 24px !important;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 16px !important;
+    }
+}
+
+</style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.php" class="logo">
+                <img src="images/logo2.png" alt="Biolyse Logo">
+            </a>
+                        
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+<ul class="nav-menu" id="navMenu">
+                <li class="nav-item" data-dropdown>
+                    <a href="index.php" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <div class="dropdown-menu">
+                        <a href="about.html#mission">Mission</a>
+                        <a href="about.html#future">Future</a>
+                        <a href="about.html#history">History</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#manufacturing">Contract Manufacturing</a>
+                        <a href="services.html#research">Research and Development</a>
+                        <a href="services.html#capabilities">Capabilities</a>
+                        <a href="services.html#partnership">Partnership</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <div class="dropdown-menu">
+                        <a href="products.html#paclitaxel">Paclitaxel</a>
+                        <a href="products.html#docetaxel">Docetaxel</a>
+                        <a href="products.html#fluorouracil">Fluorouracil</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link">News and Careers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Meet Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1> </h1>
+            <h1 style="text-align: center;">For any inquiries, please contact us </h1>
+            <h1>
+                at 
+                <a href="/cdn-cgi/l/email-protection#4920272f266f6a7f7d722b202625303a2c6f6a7d7f722a2624763a3c2b232c2a3d741e2c2b3a203d2c690a26273d282a3d">
+                info&#64;biolyse&#46;com.
+                </a>
+            </h1>
+            <h1>We are here to assist you with any questions or</h1>
+            <h1>information you may need regarding our</h1>
+            <h1>company or products.</h1>
+            <h1>Thank you for choosing Biolyse Pharma Corp.</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="page-content">
+        
+        <div class="contact-grid">
+            <!-- Contact Form -->
+            <div class="contact-form-section">
+                <h2>Get in Touch</h2>
+                <p>Have questions about our products or services? Fill out the form below and our team will get back to you shortly.</p>
+                
+                <form class="contact-form" id="contactForm" action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company/Organization</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject...</option>
+                            <option value="product-inquiry">Product Inquiry</option>
+                            <option value="partnership">Partnership Opportunity</option>
+                            <option value="career">Career Inquiry</option>
+                            <option value="general">General Question</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Contact Information</h2>
+
+                <div class="info-card">
+                    <h3>Address</h3>
+                    <p>
+                        59 Welland Vale Road<br>
+                        St. Catharines, Ontario<br>
+                        Canada L2S 3Y2
+                    </p>
+                </div>
+
+                <div class="info-card phone">
+                    <h3>Phone</h3>
+                    <p>
+                        <strong>Phone:</strong> <a href="tel:+19056878008">(905) 687-8008</a><br>
+                        <strong>Toll Free:</strong> <a href="tel:+18772341880">1-877-234-1880</a><br>
+                        <strong>Fax:</strong> (905) 687-4923
+                    </p>
+                </div>
+
+                <div class="info-card email">
+                    <h3>Email</h3>
+                    <p>
+                        <strong>General Inquiries:</strong><br>
+                        <a href="/cdn-cgi/l/email-protection#4f26212920696c797b742d262023363c2a696c7b79742c2022">info&#64;biolyse&#46;com</a>
+                    </p>
+                </div>
+
+                <div class="info-card hours">
+                    <h3>Business Hours</h3>
+                    <p>
+                        <strong>Monday - Friday:</strong><br>
+                        08:30 AM - 05:30 PM EST
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <h2>Our Facility</h2>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2910.7385477146474!2d-79.22869492346856!3d43.15889987113626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89d3507e6b4f5555%3A0x5e4d4d4d4d4d4d4d!2s59%20Welland%20Vale%20Rd%2C%20St.%20Catharines%2C%20ON%20L2S%203Y2!5e0!3m2!1sen!2sca!4v1234567890123!5m2!1sen!2sca"
+                    width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Business Hours</h3>
+                <p>Monday – Friday<br>08:30AM – 05:30PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>59 Welland Vale rd.<br>St Catharines Ontario.<br>Canada L2S 3Y2</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Phone: (905) 687 8008<br>
+                Toll Free: 1 877 234 1880<br>
+                Fax: 905 687 4923<br>
+                Email: <a href="/cdn-cgi/l/email-protection#076e69616847656e686b7e74622964686a"><span class="__cf_email__" data-cfemail="adc4c3cbc2edcfc4c2c1d4dec883cec2c0">[email&#160;protected]</span></a></p>
+            </div>
+            <div class="footer-section">
+                <h3>More Links</h3>
+                <p><a href="#privacy">Privacy Policy</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Biolyse Pharma Corp.</p>
+        </div>
+    </footer>
+
+    <!-- Note: Form submission JavaScript will be added later -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-

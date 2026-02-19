@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biolyse Pharma Corp. - Practice Website</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #ffffff;
+            padding: 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+
+        .logo {
+            padding: 10px 0;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100px;
+            width: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            display: block;
+            padding: 20px 20px;
+            color: #333;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .nav-link:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Dropdown Menu */
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #ffffff;
+            min-width: 220px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border: 1px solid #e0e0e0;
+        }
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-menu a {
+            display: block;
+            padding: 12px 20px;
+            color: #333;
+            text-decoration: none;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #f0f0f0;
+        }
+
+        /* Hamburger Menu (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+                url('images/hero-home.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content h2 {
+            font-size: 28px;
+            margin-bottom: 30px;
+            font-weight: normal;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Content Section */
+        .content-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .intro h2 {
+            font-size: 36px;
+            color: #04481e;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+            max-width: 900px;
+            margin: 0 auto 15px;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .feature-content {
+            padding: 25px;
+        }
+
+        .feature-content h3 {
+            font-size: 24px;
+            color: #04481e;
+            margin-bottom: 15px;
+        }
+
+        .feature-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .feature-link {
+            display: inline-block;
+            color: #04481e;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .feature-link:hover {
+            color: #023114;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, #04481e 0%, #023114 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: white;
+            color: #04481e;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #1a1a1a;
+            color: white;
+            padding: 40px 20px 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h3 {
+            color: #4a90e2;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: #4a90e2;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+
+        /* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+        @media (max-width: 768px) {
+
+            /* Show Hamburger Menu on Mobile */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Hide Desktop Menu on Mobile */
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 120px;
+                flex-direction: column;
+                background-color: #ffffff;
+                width: 100%;
+                text-align: left;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                max-height: calc(100vh - 120px);
+                overflow-y: auto;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-link {
+                padding: 15px 20px;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            /* Mobile Dropdown */
+            .dropdown-menu {
+                position: static;
+                display: none;
+                box-shadow: none;
+                border: none;
+                background-color: #f9f9f9;
+            }
+
+            .nav-item.dropdown-open .dropdown-menu {
+                display: block;
+            }
+
+            .dropdown-menu a {
+                padding-left: 40px;
+                font-size: 14px;
+            }
+
+            /* Hamburger Animation */
+            .hamburger.active span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+
+            /* Logo Smaller on Mobile */
+            .logo img {
+                height: 60px;
+            }
+
+            /* Hero Section */
+            .hero {
+                height: 400px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+                padding: 0 20px;
+            }
+
+            .hero-content h2 {
+                font-size: 20px;
+                padding: 0 20px;
+            }
+
+            /* Content Section */
+            .intro h2 {
+                font-size: 28px;
+            }
+
+            .intro p {
+                font-size: 16px;
+            }
+
+            /* Features Grid */
+            .features {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                margin: 40px 0;
+            }
+
+            /* CTA Section */
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: 24px;
+            }
+
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <img src="images/logo2.png" alt="Biolyse Logo">
+            </a>
+
+            <!-- Hamburger Menu Icon -->
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <div class="dropdown-menu">
+                        <a href="about.html#mission">Mission</a>
+                        <a href="about.html#future">Future</a>
+                        <a href="about.html#history">History</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#contract-manufacturing">Contract Manufacturing</a>
+                        <a href="services.html#research-and-development">Research and Development</a>
+                        <a href="services.html#capabilities">Capabilities</a>
+                        <a href="services.html#partnership">Partnership</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <div class="dropdown-menu">
+                        <a href="products.html#paclitaxel">Paclitaxel</a>
+                        <a href="products.html#docetaxel">Docetaxel</a>
+                        <a href="products.html#fluorouracil">Fluorouracil</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link">News and Careers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Meet Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Biolyse Pharma Corp.</h1>
+            <h2>Accessibility to Cancer Treatment Worldwide</h2>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="intro">
+            <h2>Accessibility and Affordability</h2>
+            <p>Welcome to Biolyse Pharma Corp., a Canadian-owned pharmaceutical company operating in the heart of
+                Southern Ontario.</p>
+            <p>Since its foundation, Biolyse has been directing its efforts on the development and manufacturing of
+                impactful medications that address significant health challenges.</p>
+            <p>Biolyse manufactures and distributes sterile injectable medicines to oncology centers nationally and
+                internationally.</p>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="features">
+            <div class="feature-card">
+                <img src="images/innovation.jpg" alt="Cutting-Edge Innovation" class="feature-image">
+                <div class="feature-content">
+                    <h3>Cutting-Edge Innovation</h3>
+                    <p>Pioneering research drives our development of advanced cancer treatments.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <img src="images/global-reach.jpg" alt="Global Reach" class="feature-image">
+                <div class="feature-content">
+                    <h3>Global Reach, Local Commitment</h3>
+                    <p>Serving worldwide healthcare needs with local expertise and dedication.</p>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <img src="images/patient.jpg" alt="Patient-Centered Care" class="feature-image">
+                <div class="feature-content">
+                    <h3>Patient-Centered Care</h3>
+                    <p>Putting patients first, we strive for accessible and effective cancer treatments.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links Grid -->
+        <div class="features">
+            <div class="feature-card">
+                <img src="images/about.jpg" alt="About Us" class="feature-image">
+                <div class="feature-content">
+                    <h3>About Us</h3>
+                    <p>Learn about our mission, history, and commitment to advancing cancer care worldwide.</p>
+                    <a href="about.html" class="feature-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <img src="images/products.jpg" alt="Products" class="feature-image">
+                <div class="feature-content">
+                    <h3>Products</h3>
+                    <p>Explore our range of chemotherapy medications and cancer treatment solutions.</p>
+                    <a href="products.html" class="feature-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <img src="images/services.jpg" alt="Services" class="feature-image">
+                <div class="feature-content">
+                    <h3>Services</h3>
+                    <p>Discover our contract manufacturing, R&D, and partnership opportunities.</p>
+                    <a href="services.html" class="feature-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="feature-card">
+                <img src="images/building.jpg" alt="News and Careers" class="feature-image">
+                <div class="feature-content">
+                    <h3>News and Careers</h3>
+                    <p>Stay updated with our latest news and explore career opportunities.</p>
+                    <a href="news.html" class="feature-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Join us in advancing cancer care. Explore our innovative solutions today!</h2>
+        <a href="contact.html" class="cta-button">Contact Us</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Business Hours</h3>
+                <p>Monday – Friday<br>08:30AM – 05:30PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>59 Welland Vale rd.<br>St Catharines Ontario.<br>Canada L2S 3Y2</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Phone: (905) 687 8008<br>
+                    Toll Free: 1 877 234 1880<br>
+                    Fax: 905 687 4923<br>
+                    Email: <a href="mailto:info@biolyse.com">info@biolyse.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>More Links</h3>
+                <p><a href="privacy-policy.html">Privacy Policy</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Biolyse Pharma Corp.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const dropdownItems = document.querySelectorAll('[data-dropdown]');
+
+        // Toggle mobile menu
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link (except dropdown parent)
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const parent = link.parentElement;
+
+                // If it's a dropdown item on mobile, toggle dropdown instead
+                if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
+                    e.preventDefault();
+                    parent.classList.toggle('dropdown-open');
+                } else if (!parent.hasAttribute('data-dropdown')) {
+                    // Close menu if not a dropdown
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        // Close menu when clicking dropdown links
+        document.querySelectorAll('.dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

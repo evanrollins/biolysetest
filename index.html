@@ -34,11 +34,11 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 20px;
+            
         }
 
         .logo {
-            padding: 10px 0;
+            padding: 10px 20px;
             color: white;
             font-size: 24px;
             font-weight: bold;
@@ -55,7 +55,7 @@
         .nav-menu {
             display: flex;
             list-style: none;
-            margin: 0;
+            margin-left: auto;
         }
 
         .nav-item {
@@ -86,8 +86,11 @@
             border: 1px solid #e0e0e0;
         }
 
-        .nav-item:hover .dropdown-menu {
-            display: block;
+        @media (min-width: 769px) {
+
+            .nav-item:hover .dropdown-menu {
+             display: block;
+            }
         }
 
         .dropdown-menu a {
@@ -312,19 +315,24 @@
             .nav-menu {
                 position: fixed;
                 left: -100%;
-                top: 120px;
+                top: 80px;
                 flex-direction: column;
                 background-color: #ffffff;
                 width: 100%;
                 text-align: left;
                 transition: 0.3s;
                 box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                max-height: calc(100vh - 120px);
+                max-height: calc(100vh - 80px);
                 overflow-y: auto;
             }
 
             .nav-menu.active {
                 left: 0;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+                justify-content: space-between;
             }
 
             .nav-item {
@@ -618,20 +626,28 @@
 
         // Close menu when clicking a link (except dropdown parent)
         document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                const parent = link.parentElement;
+                link.addEventListener('click', (e) => {
+                    const parent = link.parentElement;
 
-                // If it's a dropdown item on mobile, toggle dropdown instead
-                if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
-                    e.preventDefault();
-                    parent.classList.toggle('dropdown-open');
-                } else if (!parent.hasAttribute('data-dropdown')) {
-                    // Close menu if not a dropdown
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                }
+                    if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
+                        if (parent.classList.contains('dropdown-open')) {
+                            // Second tap — dropdown already open, follow the link
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            parent.classList.remove('dropdown-open');
+                            window.location.link.href;
+                            // Allow navigation to proceed naturally
+                        } else {
+                            // First tap — open the dropdown
+                            e.preventDefault();
+                            parent.classList.toggle('dropdown-open');
+                        }
+                    } else if (!parent.hasAttribute('data-dropdown')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
             });
-        });
 
         // Close menu when clicking dropdown links
         document.querySelectorAll('.dropdown-menu a').forEach(link => {

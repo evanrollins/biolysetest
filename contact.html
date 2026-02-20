@@ -85,9 +85,12 @@ body {
     border: 1px solid #e0e0e0;  /* Add a subtle border */
 }
 
-.nav-item:hover .dropdown-menu {
-    display: block;
-}
+@media (min-width: 769px) {
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+    }
 
 .dropdown-menu a {
     display: block;
@@ -104,7 +107,9 @@ body {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 600px;
+    min-height: 600px;
+    height:auto;
+    padding: 60px 20px;
     background: linear-gradient(rgba(2, 49, 20, 1), rgba(2,49,20,1)), 
                 url('https://via.placeholder.com/1600x400/2c5aa0/ffffff?text=Contact+Us') center/cover;
     display: flex;
@@ -115,8 +120,16 @@ body {
 }
 
 .hero h1 {
-    font-size: 40px;
+    font-size: 48px;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero p {
+    font-size: 22px;
+    color: white;
+    margin-top: 15px;
+    line-height: 1.8;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 h1 a {
@@ -450,7 +463,8 @@ h1 a:hover {
 
     /* Hero sections */
     .hero {
-        height: 400px !important;
+        min-height: unset;
+        padding: 40px 20px;
     }
 
     .hero h1 {
@@ -516,7 +530,7 @@ h1 a:hover {
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo">
+            <a href="index.php" class="logo">
                 <img src="images/logo2.png" alt="Biolyse Logo">
             </a>
                         
@@ -527,7 +541,7 @@ h1 a:hover {
                 <span></span>
             </div>
 <ul class="nav-menu" id="navMenu">
-                <li class="nav-item" data-dropdown>
+                <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
@@ -569,22 +583,15 @@ h1 a:hover {
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero">
-        <div>
-            <h1> </h1>
-            <h1 style="text-align: center;">For any inquiries, please contact us </h1>
-            <h1>
-                at 
-                <a href="/cdn-cgi/l/email-protection#4920272f266f6a7f7d722b202625303a2c6f6a7d7f722a2624763a3c2b232c2a3d741e2c2b3a203d2c690a26273d282a3d">
-                info&#64;biolyse&#46;com.
-                </a>
-            </h1>
-            <h1>We are here to assist you with any questions or</h1>
-            <h1>information you may need regarding our</h1>
-            <h1>company or products.</h1>
-            <h1>Thank you for choosing Biolyse Pharma Corp.</h1>
-        </div>
-    </section>
+<section class="hero">
+    <div>
+        <h1>Contact Us</h1>
+        <p>For any inquiries, please contact us at <a href="mailto:info@biolyse.com">info@biolyse.com</a>.<br>
+            We are here to assist you with any questions or information you may need<br>
+            regarding our company or products.<br>
+            Thank you for choosing Biolyse Pharma Corp.</p>
+    </div>
+</section>
 
     <!-- Main Content -->
     <div class="page-content">
@@ -711,13 +718,74 @@ h1 a:hover {
             </div>
             <div class="footer-section">
                 <h3>More Links</h3>
-                <p><a href="#privacy">Privacy Policy</a></p>
+                <p><a href="privacy-policy.html">Privacy Policy</a></p>
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2024 Biolyse Pharma Corp.</p>
         </div>
     </footer>
+        
+        <!-- Mobile Menu JavaScript -->
+        <script>
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            const dropdownItems = document.querySelectorAll('[data-dropdown]');
+
+            // Toggle mobile menu
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link (except dropdown parent)
+            document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const parent = link.parentElement;
+
+                        if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
+                            if (parent.classList.contains('dropdown-open')) {
+                                // Second tap — follow the link
+                                hamburger.classList.remove('active');
+                                navMenu.classList.remove('active');
+                                parent.classList.remove('dropdown-open');
+                                window.location.href = link.href;
+                            } else {
+                                // First tap — open the dropdown
+                                e.preventDefault();
+                                parent.classList.toggle('dropdown-open');
+                            }
+                        } else if (!parent.hasAttribute('data-dropdown')) {
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+                    });
+                });
+
+            // Close menu when clicking dropdown links
+            document.querySelectorAll('.dropdown-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.querySelectorAll('.dropdown-open').forEach(item => {
+                        item.classList.remove('dropdown-open');
+                    });
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.querySelectorAll('.dropdown-open').forEach(item => {
+                        item.classList.remove('dropdown-open');
+                    });
+                }
+            });
+        </script>
 
     <!-- Note: Form submission JavaScript will be added later -->
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-
+    <!--<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-->
+    </body>
+</html>

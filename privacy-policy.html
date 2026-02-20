@@ -86,8 +86,11 @@
             border: 1px solid #e0e0e0;
         }
 
+        @media (min-width: 769px) {
+
         .nav-item:hover .dropdown-menu {
             display: block;
+            }
         }
 
         .dropdown-menu a {
@@ -410,7 +413,7 @@
                 <span></span>
             </div>
 <ul class="nav-menu" id="navMenu">
-                <li class="nav-item" data-dropdown>
+                <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
@@ -616,4 +619,78 @@
                 <p>Phone: (905) 687 8008<br>
                     Toll Free: 1 877 234 1880<br>
                     Fax: 905 687 4923<br>
-                    Email: <a href="/cdn-cgi/l/email-protection#dab3b4bcb59ab8b3b5b6a3a9bff4b9b5b7"><span class="__cf_email__" data-cfemail="f59c9b939ab5979c9a998c8690db969a98">[email&#1
+                    Email: <a href="/cdn-cgi/l/email-protection#076e69616847656e686b7e74622964686a"><span class="__cf_email__" data-cfemail="adc4c3cbc2edcfc4c2c1d4dec883cec2c0">[email&#160;protected]</span></a></p>
+            </div>
+            <div class="footer-section">
+                <h3>More Links</h3>
+                <p><a href="privacy-policy.html">Privacy Policy</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Biolyse Pharma Corp.</p>
+        </div>
+    </footer>
+        
+        <!-- Mobile Menu JavaScript -->
+        <script>
+            const hamburger = document.getElementById('hamburger');
+            const navMenu = document.getElementById('navMenu');
+            const dropdownItems = document.querySelectorAll('[data-dropdown]');
+
+            // Toggle mobile menu
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            // Close menu when clicking a link (except dropdown parent)
+            document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        const parent = link.parentElement;
+
+                        if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
+                            if (parent.classList.contains('dropdown-open')) {
+                                // Second tap — follow the link
+                                hamburger.classList.remove('active');
+                                navMenu.classList.remove('active');
+                                parent.classList.remove('dropdown-open');
+                                window.location.href = link.href;
+                            } else {
+                                // First tap — open the dropdown
+                                e.preventDefault();
+                                parent.classList.toggle('dropdown-open');
+                            }
+                        } else if (!parent.hasAttribute('data-dropdown')) {
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                        }
+                    });
+                });
+
+            // Close menu when clicking dropdown links
+            document.querySelectorAll('.dropdown-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.querySelectorAll('.dropdown-open').forEach(item => {
+                        item.classList.remove('dropdown-open');
+                    });
+                });
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.querySelectorAll('.dropdown-open').forEach(item => {
+                        item.classList.remove('dropdown-open');
+                    });
+                }
+            });
+        </script>
+
+    <!-- Note: Form submission JavaScript will be added later -->
+    <!--<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-->
+    </body>
+</html>

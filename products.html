@@ -85,9 +85,12 @@ body {
     border: 1px solid #e0e0e0;  /* Add a subtle border */
 }
 
-.nav-item:hover .dropdown-menu {
-    display: block;
-}
+@media (min-width: 769px) {
+
+        .nav-item:hover .dropdown-menu {
+            display: block;
+        }
+    }
 
 .dropdown-menu a {
     display: block;
@@ -201,12 +204,15 @@ body {
 
 .product-links {
     margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
 }
 
 .product-links a {
-    display: inline-block;
-    margin-right: 20px;
-    margin-bottom: 10px;
+    display: block;
+    margin-bottom: 0px;
     padding: 10px 20px;
     background-color: #04481e;
     color: white;
@@ -486,7 +492,7 @@ body {
                 <span></span>
             </div>
 <ul class="nav-menu" id="navMenu">
-                <li class="nav-item" data-dropdown>
+                <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
@@ -552,8 +558,9 @@ body {
                 <div class="product-info">
                     <h2>Paclitaxel for Injection 6mg/mL</h2>
                     <div class="product-links">
-                        <a href="pdfs/PACLITAXEL/PACLITAXEL_MONOGRAPH_ENG.pdf" target="_blank">Product Monograph</a>
-                        <a href="pdfs/PACLITAXEL/Pacli_SDS.pdf" target="_blank">SDS</a>
+                        <a href="pdfs/PACLITAXEL/PACLITAXEL_MONOGRAPH_ENG.pdf" target="_blank">Paclitaxel Monograph (ENG)</a>
+                        <a href="" target="_blank">Paclitaxel Monograph (FR)</a>
+                        <a href="pdfs/PACLITAXEL/Pacli_SDS.pdf" target="_blank">Safety Data Sheet</a>
                     </div>
                 </div>
             </div>
@@ -642,8 +649,9 @@ body {
                 <div class="product-info">
                     <h2>Docetaxel Injection USP 20mg/mL</h2>
                     <div class="product-links">
-                        <a href="pdfs/DOCETAXEL/Docetaxel_English_Monograh_2025.pdf" target="_blank">Product English Monograph</a>
-                        <a href="pdfs/DOCETAXEL/Docetaxel_SDS.pdf" target="_blank">SDS</a>
+                        <a href="pdfs/DOCETAXEL/Docetaxel_English_Monograh_2025.pdf" target="_blank">Docetaxel Monograph (ENG)</a>
+                        <a href="" target="_blank">Docetaxel Monograph (FR)</a>
+                        <a href="pdfs/DOCETAXEL/Docetaxel_SDS.pdf" target="_blank">Safety Data Sheet</a>
                     </div>
                 </div>
             </div>
@@ -732,9 +740,9 @@ body {
                 <div class="product-info">
                     <h2>Fluorouracil Injection USP 50mg/mL</h2>
                     <div class="product-links">
-                        <a href="pdfs/FLUOROURACIL/FLUOROURACIL_MONOGRAPH_ENG.pdf" target="_blank">Product English Monograph</a>
-                        <a href="pdfs/FLUOROURACIL/FLUOROURACIL_MONOGRAPH_FR.pdf" target="_blank">Product French Monograph</a>
-                        <a href="pdfs/FLUOROURACIL/Fluorouracil_Injection_SDS.pdf" target="_blank">SDS</a>
+                        <a href="pdfs/FLUOROURACIL/FLUOROURACIL_MONOGRAPH_ENG.pdf" target="_blank">Fluorouracil Monograph (ENG)</a>
+                        <a href="pdfs/FLUOROURACIL/FLUOROURACIL_MONOGRAPH_FR.pdf" target="_blank">Fluorouracil Monograph (FR)</a>
+                        <a href="pdfs/FLUOROURACIL/Fluorouracil_Injection_SDS.pdf" target="_blank">Safety Data Sheet</a>
                     </div>
                 </div>
             </div>
@@ -816,7 +824,69 @@ body {
             </div>
             <div class="footer-section">
                 <h3>More Links</h3>
-                <p><a href="#privacy">Privacy Policy</a></p>
+                <p><a href="privacy-policy.html">Privacy Policy</a></p>
             </div>
         </div>
-        
+    </footer>
+    
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const dropdownItems = document.querySelectorAll('[data-dropdown]');
+
+        // Toggle mobile menu
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link (except dropdown parent)
+        document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const parent = link.parentElement;
+
+                    if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
+                        if (parent.classList.contains('dropdown-open')) {
+                            // Second tap — follow the link
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            parent.classList.remove('dropdown-open');
+                            window.location.href = link.href;
+                        } else {
+                            // First tap — open the dropdown
+                            e.preventDefault();
+                            parent.classList.toggle('dropdown-open');
+                        }
+                    } else if (!parent.hasAttribute('data-dropdown')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+
+        // Close menu when clicking dropdown links
+        document.querySelectorAll('.dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            }
+        });
+    </script>
+</body>
+    
+</html>        

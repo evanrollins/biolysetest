@@ -86,8 +86,11 @@
             border: 1px solid #e0e0e0;  /* Add a subtle border */
         }
 
+       @media (min-width: 769px) {
+
         .nav-item:hover .dropdown-menu {
             display: block;
+            }
         }
 
         .dropdown-menu a {
@@ -218,8 +221,9 @@
         /* Departments Section */
         .departments-section {
             background: #f9f9f9;
-            padding: 80px 0;
-            margin: 80px -20px 0;
+            padding: 80px 20px;
+            margin-top: 80px;
+            width: 100%;
         }
 
         .departments-container {
@@ -568,8 +572,8 @@
                 <span></span>
                 <span></span>
             </div>
-<ul class="nav-menu" id="navMenu">
-                <li class="nav-item" data-dropdown>
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
@@ -830,4 +834,66 @@
                 <p><a href="privacy-policy.html">Privacy Policy</a></p>
             </div>
         </div>
-        </div>
+    </footer>
+    
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const dropdownItems = document.querySelectorAll('[data-dropdown]');
+
+        // Toggle mobile menu
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link (except dropdown parent)
+        document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const parent = link.parentElement;
+
+                    if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
+                        if (parent.classList.contains('dropdown-open')) {
+                            // Second tap — follow the link
+                            hamburger.classList.remove('active');
+                            navMenu.classList.remove('active');
+                            parent.classList.remove('dropdown-open');
+                            window.location.href = link.href;
+                        } else {
+                            // First tap — open the dropdown
+                            e.preventDefault();
+                            parent.classList.toggle('dropdown-open');
+                        }
+                    } else if (!parent.hasAttribute('data-dropdown')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+
+        // Close menu when clicking dropdown links
+        document.querySelectorAll('.dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            });
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            }
+        });
+    </script>
+</body>
+    
+</html>

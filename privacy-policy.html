@@ -1,247 +1,249 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Biolyse Pharma Corp.</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Biolyse Pharma Corp.</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
 
-        /* Navigation Bar */
-        .navbar {
-            background-color: #ffffff;
-            padding: 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+/* Navigation Bar */
+.navbar {
+    background-color: #ffffff;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-        
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
     justify-content: space-between;
 }
 
-        .logo {
-            padding: 10px 20px;
-            color: #333;
-            font-size: 24px;
-            font-weight: bold;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
+.logo {
+    padding: 10px 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
 
-        .logo img {
-            height: 50px;
-            width: auto;
-        }
+.logo img {
+    height: 100px;
+    width: auto;
+}
 
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            margin-left: auto;
-        }
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
 
-        .nav-item {
-            position: relative;
-        }
+.nav-item {
+    position: relative;
+}
 
-        .nav-link {
-            display: block;
-            padding: 20px 20px;
-            color: #333;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
+.nav-link {
+    display: block;
+    padding: 20px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
 
-        .nav-link:hover {
-            background-color: #f0f0f0;
-        }
+.nav-link:hover {
+    background-color: #f0f0f0;
+}
 
-        /* Dropdown Menu */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #ffffff;
-            min-width: 220px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            border: 1px solid #e0e0e0;
-        }
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border: 1px solid #e0e0e0;
+}
 
-        @media (min-width: 769px) {
+@media (min-width: 769px) {
+    .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+}
 
-        .nav-item:hover .dropdown-menu {
-            display: block;
-            }
-        }
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #e0e0e0;
+}
 
-        .dropdown-menu a {
-            display: block;
-            padding: 12px 20px;
-            color: #333;
-            text-decoration: none;
-            border-bottom: 1px solid #e0e0e0;
-        }
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
 
-        .dropdown-menu a:hover {
-            background-color: #f0f0f0;
-        }
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 300px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('images/services.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
 
-        /* Hero Section */
-        .hero {
-            position: relative;
-            height: 300px;
-            background: linear-gradient(135deg, #2c5aa0 0%, #1a3a6b 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-        }
+.hero h1 {
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
 
-        .hero h1 {
-            font-size: 48px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-        }
+/* Page Content */
+.page-content {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
 
-        /* Page Content */
-        .page-content {
-            max-width: 900px;
-            margin: 60px auto;
-            padding: 0 20px;
-        }
+.last-updated {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-bottom: 40px;
+}
 
-        .last-updated {
-            text-align: center;
-            color: #666;
-            font-style: italic;
-            margin-bottom: 40px;
-        }
+.policy-section {
+    margin-bottom: 40px;
+}
 
-        .policy-section {
-            margin-bottom: 40px;
-        }
+.policy-section h2 {
+    font-size: 28px;
+    color: #04481e;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e0e0e0;
+}
 
-        .policy-section h2 {
-            font-size: 28px;
-            color: #2c5aa0;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #e0e0e0;
-        }
+.policy-section h3 {
+    font-size: 22px;
+    color: #04481e;
+    margin-top: 25px;
+    margin-bottom: 12px;
+}
 
-        .policy-section h3 {
-            font-size: 22px;
-            color: #2c5aa0;
-            margin-top: 25px;
-            margin-bottom: 12px;
-        }
+.policy-section p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+}
 
-        .policy-section p {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 15px;
-        }
+.policy-section ul {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
 
-        .policy-section ul {
-            margin-left: 25px;
-            margin-bottom: 15px;
-        }
+.policy-section ul li {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 8px;
+}
 
-        .policy-section ul li {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 8px;
-        }
+.contact-box {
+    background: #f0f7f2;
+    padding: 30px;
+    border-radius: 8px;
+    border-left: 4px solid #04481e;
+    margin-top: 40px;
+}
 
-        .contact-box {
-            background: #f0f7ff;
-            padding: 30px;
-            border-radius: 8px;
-            border-left: 4px solid #2c5aa0;
-            margin-top: 40px;
-        }
+.contact-box h3 {
+    color: #04481e;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
 
-        .contact-box h3 {
-            color: #2c5aa0;
-            margin-bottom: 15px;
-        }
+.contact-box p {
+    margin-bottom: 10px;
+    color: #555;
+    font-size: 16px;
+    line-height: 1.8;
+}
 
-        .contact-box p {
-            margin-bottom: 10px;
-        }
+.contact-box a {
+    color: #04481e;
+    text-decoration: none;
+    font-weight: bold;
+}
 
-        .contact-box a {
-            color: #2c5aa0;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.contact-box a:hover {
+    text-decoration: underline;
+}
 
-        .contact-box a:hover {
-            text-decoration: underline;
-        }
+/* Footer */
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 80px;
+}
 
-        /* Footer */
-        .footer {
-            background-color: #1a1a1a;
-            color: white;
-            padding: 40px 20px 20px;
-            margin-top: 80px;
-        }
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-bottom: 30px;
-        }
+.footer-section h3 {
+    color: #04481e;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
 
-        .footer-section h3 {
-            color: #04481e;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.8;
+}
 
-        .footer-section p,
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            line-height: 1.8;
-        }
+.footer-section a:hover {
+    color: #4a90e2;
+}
 
-        .footer-section a:hover {
-            color: #4a90e2;
-        }
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #888;
+}
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            color: #888;
-        }
-    
 /* Hamburger Menu (Hidden on Desktop) */
 .hamburger {
     display: none;
@@ -335,7 +337,7 @@
 
     /* Hero sections */
     .hero {
-        height: 400px !important;
+        height: 250px !important;
     }
 
     .hero h1 {
@@ -343,76 +345,38 @@
         padding: 0 20px;
     }
 
-    .hero h2, .hero p {
-        font-size: 20px !important;
-        padding: 0 20px;
-    }
-
-    /* Content sections */
-    .section-header h2, .intro h2 {
-        font-size: 28px !important;
-    }
-
-    .section-header p, .intro p {
-        font-size: 16px !important;
-    }
-
-    /* Grids */
-    .features, .team-grid, .news-grid, .product-variants, .benefits-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .service-content, .section-content, .contact-grid, .product-header {
-        grid-template-columns: 1fr !important;
-    }
-
-    .service-content.reverse {
-        direction: ltr !important;
-    }
-
-    /* Department cards */
-    .department-card {
-        grid-template-columns: 1fr !important;
-    }
-
-    .department-image {
-        min-height: 200px;
-    }
-
     /* Footer */
     .footer-content {
         grid-template-columns: 1fr !important;
     }
 
-    /* CTA */
-    .cta-section h2 {
-        font-size: 24px !important;
+    .policy-section h2 {
+        font-size: 22px !important;
     }
 
-    .cta-button {
-        padding: 12px 30px;
-        font-size: 16px !important;
+    .policy-section h3 {
+        font-size: 18px !important;
     }
 }
-
 </style>
 </head>
-
 <body>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="images/logo.png" alt="Biolyse Logo">
+                <img src="images/logo2.png" alt="Biolyse Logo">
             </a>
-                        
+
             <!-- Hamburger Menu Icon -->
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-<ul class="nav-menu" id="navMenu">
+
+            <ul class="nav-menu" id="navMenu">
                 <li class="nav-item">
                     <a href="index.html" class="nav-link">Home</a>
                 </li>
@@ -442,6 +406,9 @@
                     </div>
                 </li>
                 <li class="nav-item">
+                    <a href="compliance.html" class="nav-link">Compliance</a>
+                </li>
+                <li class="nav-item">
                     <a href="news.html" class="nav-link">News and Careers</a>
                 </li>
                 <li class="nav-item">
@@ -468,136 +435,138 @@
 
         <!-- Introduction -->
         <div class="policy-section">
-            <p>At Biolyse Pharma Corp., your privacy matters to us. This policy outlines what information we collect
-                when you use our website, why we collect it, and what we do with it.</p>
+            <p>At Biolyse Pharma Corp., your privacy matters to us. This policy explains what information is collected when you visit our website, how it may be used, and your rights regarding that information.</p>
+            <p>This website is informational in nature. It does not offer products or services for sale online, and the primary means of contacting us is by email or phone.</p>
         </div>
 
-        <!-- Information We Collect -->
+        <!-- Hosting and Third-Party Data Collection -->
         <div class="policy-section">
-            <h2>What Information We Collect</h2>
-
-            <h3>Information You Give Us</h3>
-            <p>When you contact us, apply for a job, or request product information, you might provide:</p>
+            <h2>About This Website and Our Hosting Provider</h2>
+            <p>This website is hosted by <strong>IONOS (1&amp;1 IONOS Inc.)</strong>, a third-party web hosting provider. As a standard part of hosting and delivering websites, IONOS may automatically collect certain technical data from visitors, including:</p>
             <ul>
-                <li>Your name, email address, and phone number</li>
-                <li>Company name and professional title</li>
-                <li>Your message or inquiry details</li>
-                <li>Resume and work history (if applying for a position)</li>
+                <li>IP addresses and approximate geographic location</li>
+                <li>Browser type and operating system</li>
+                <li>Date, time, and duration of visits</li>
+                <li>Pages and files accessed</li>
+                <li>Referring URLs (how you arrived at our site)</li>
             </ul>
+            <p>This data is collected and processed by IONOS as part of their infrastructure operations. Biolyse Pharma Corp. does not directly control this collection and does not have routine access to individual-level visitor logs. For details on how IONOS handles this data, please refer to the <a href="https://www.ionos.com/terms-gtc/privacy-policy/" target="_blank" rel="noopener noreferrer">IONOS Privacy Policy</a>.</p>
+        </div>
 
-            <h3>Information We Collect Automatically</h3>
-            <p>Like most websites, we collect some technical information automatically:</p>
+        <!-- Information You Provide -->
+        <div class="policy-section">
+            <h2>Information You Provide to Us</h2>
+            <p>We only receive personal information when you choose to contact us directly. This may include:</p>
             <ul>
-                <li>Your IP address and general location</li>
-                <li>Browser type and device information</li>
-                <li>Which pages you visit and how long you stay</li>
-                <li>How you found our website</li>
+                <li>Your name and email address</li>
+                <li>Your company name and professional title</li>
+                <li>Phone number (if provided)</li>
+                <li>The content of your message or inquiry</li>
+                <li>Resume and work history (if inquiring about employment)</li>
             </ul>
-            <p>We use standard cookies to improve your experience and understand how people use our site. You can
-                disable cookies in your browser settings if you prefer.</p>
+            <p>Contact on this website is initiated by emailing us directly. We do not operate online contact forms that submit data to a server at this time.</p>
         </div>
 
         <!-- How We Use Your Information -->
         <div class="policy-section">
-            <h2>How We Use This Information</h2>
-            <p>We use your information to:</p>
+            <h2>How We Use Your Information</h2>
+            <p>Any information you send us directly is used solely to:</p>
             <ul>
-                <li>Answer your questions and respond to inquiries</li>
-                <li>Send you information you've requested about our products</li>
-                <li>Review job applications and schedule interviews</li>
-                <li>Improve our website based on how it's being used</li>
-                <li>Keep our website secure and prevent fraud</li>
-                <li>Meet our legal and regulatory obligations</li>
+                <li>Respond to your questions and inquiries</li>
+                <li>Provide information you have requested about our products or services</li>
+                <li>Review employment inquiries and follow up as appropriate</li>
+                <li>Fulfil any other purpose you contacted us for</li>
             </ul>
-            <p>We won't use your information for anything you haven't asked us to do.</p>
+            <p>We do not use your information for marketing purposes without your consent, and we will not contact you for reasons unrelated to your original inquiry.</p>
         </div>
 
-        <!-- How We Share Your Information -->
+        <!-- No E-Commerce -->
+        <div class="policy-section">
+            <h2>No Online Transactions</h2>
+            <p>This website does not include any purchasing functionality. No payment information, credit card data, or financial details are collected or processed through this site.</p>
+        </div>
+
+        <!-- Sharing Information -->
         <div class="policy-section">
             <h2>Who We Share Information With</h2>
-            <p>We don't sell your information to anyone. Period.</p>
-            <p>We only share your information when:</p>
+            <p>We do not sell, rent, or trade your personal information. We may share it only in the following limited circumstances:</p>
             <ul>
-                <li><strong>You ask us to</strong> — For example, if you request product information that requires
-                    coordination with a distributor</li>
-                <li><strong>We work with service providers</strong> — Companies that help us run our website or send
-                    emails on our behalf. They're contractually required to keep your information confidential</li>
-                <li><strong>The law requires it</strong> — If we receive a valid legal request or need to protect
-                    someone's safety</li>
-                <li><strong>Our business changes</strong> — If Biolyse is acquired or merged, your information would
-                    transfer to the new owner</li>
+                <li><strong>Service providers</strong> — Third parties who assist with business operations (such as our hosting provider, IONOS) are bound by their own privacy policies and data processing terms.</li>
+                <li><strong>Legal obligations</strong> — If required by applicable law or a valid legal process.</li>
+                <li><strong>Business changes</strong> — In the event of a merger, acquisition, or sale of assets, personal information may transfer to the successor organization.</li>
             </ul>
+        </div>
+
+        <!-- Cookies -->
+        <div class="policy-section">
+            <h2>Cookies</h2>
+            <p>Our hosting provider, IONOS, may place technical cookies on your device as part of standard website delivery. These are typically used to maintain session integrity and basic site functionality. We do not use tracking, advertising, or analytics cookies directly.</p>
+            <p>You can manage or disable cookies through your browser settings, though this may affect how some pages display.</p>
         </div>
 
         <!-- Data Security -->
         <div class="policy-section">
             <h2>How We Protect Your Information</h2>
-            <p>We take reasonable precautions to protect your information from unauthorized access or disclosure. This
-                includes secure servers, encrypted connections, and limited employee access.</p>
-            <p>That said, no internet transmission is completely secure. While we do our best to protect your
-                information, we can't guarantee absolute security.</p>
+            <p>Emails you send us are handled with care and stored securely within our internal systems. Access to correspondence is limited to staff who need it to respond to your inquiry.</p>
+            <p>While we take reasonable precautions, no method of electronic communication is entirely secure. We cannot guarantee the absolute security of information transmitted over the internet.</p>
         </div>
 
         <!-- Data Retention -->
         <div class="policy-section">
             <h2>How Long We Keep Your Information</h2>
-            <p>We keep your information only as long as we need it. For example:</p>
+            <p>We retain personal information only as long as necessary for the purpose it was collected:</p>
             <ul>
-                <li>Contact form inquiries — Typically 2-3 years or until the matter is resolved</li>
-                <li>Job applications — Up to 2 years in case other positions become available</li>
-                <li>Business correspondence — As required by our record-keeping policies</li>
+                <li>General inquiries and correspondence — typically 2–3 years, or until the matter is resolved</li>
+                <li>Employment inquiries — up to 2 years in the event a relevant position becomes available</li>
+                <li>Business records — as required under applicable regulations and internal record-keeping policies</li>
             </ul>
-            <p>After that, we securely delete or anonymize it.</p>
+            <p>After the applicable retention period, information is securely deleted or anonymized.</p>
         </div>
 
-        <!-- Your Rights and Choices -->
+        <!-- Your Rights -->
         <div class="policy-section">
             <h2>Your Rights</h2>
-            <p>You have the right to:</p>
+            <p>Under applicable Canadian privacy law (PIPEDA), you have the right to:</p>
             <ul>
-                <li><strong>Know what we have</strong> — Request a copy of your personal information</li>
-                <li><strong>Fix mistakes</strong> — Ask us to correct inaccurate information</li>
-                <li><strong>Delete your data</strong> — Request that we delete your information (with some exceptions)
-                </li>
-                <li><strong>Unsubscribe</strong> — Stop receiving emails from us at any time</li>
-                <li><strong>Ask questions</strong> — Contact us about how we handle your information</li>
+                <li><strong>Access</strong> — Request a copy of personal information we hold about you</li>
+                <li><strong>Correction</strong> — Ask us to correct inaccurate or incomplete information</li>
+                <li><strong>Withdrawal of consent</strong> — Withdraw consent to our use of your information, subject to legal or contractual restrictions</li>
+                <li><strong>Inquire</strong> — Ask questions about our privacy practices</li>
             </ul>
-            <p>To exercise any of these rights, just email us at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e38a8d858ca3818a8c8f9a9086cd808c8e">[email&#160;protected]</a> or call our office.</p>
+            <p>To exercise any of these rights, please contact us by email or phone using the details below.</p>
         </div>
 
-        <!-- Third-Party Websites -->
+        <!-- Links to Other Sites -->
         <div class="policy-section">
             <h2>Links to Other Websites</h2>
-            <p>Our website links to other sites (like news articles or partner organizations). We're not responsible for
-                their privacy practices. When you click a link to another site, their privacy policy applies instead of
-                ours.</p>
+            <p>Our website may contain links to external websites, such as news articles or partner organizations. We are not responsible for the privacy practices of those sites. When you follow a link to another website, that site's privacy policy governs.</p>
         </div>
 
-        <!-- International Users -->
+        <!-- International Visitors -->
         <div class="policy-section">
             <h2>International Visitors</h2>
-            <p>Biolyse operates from Canada. If you're visiting from another country, your information will be processed
-                here under Canadian privacy laws, which may differ from your local regulations.</p>
+            <p>Biolyse Pharma Corp. is based in Canada. If you visit or contact us from outside Canada, please be aware that your information will be processed in Canada under Canadian privacy laws, which may differ from the laws of your home country.</p>
         </div>
 
-        <!-- Changes to This Privacy Policy -->
+        <!-- Policy Updates -->
         <div class="policy-section">
-            <h2>Policy Updates</h2>
-            <p>We may update this policy occasionally. If we make significant changes, we'll update the date at the top.
-                For major changes, we might also send an email to let you know.</p>
+            <h2>Changes to This Policy</h2>
+            <p>We may update this privacy policy from time to time to reflect changes in our practices or applicable laws. When we do, the effective date at the top of this page will be revised. We encourage you to review this page periodically.</p>
         </div>
 
-        <!-- Contact Us -->
+        <!-- Contact Box -->
         <div class="contact-box">
-            <h3>Questions About Your Privacy?</h3>
-            <p>If you have concerns about how we handle your information, we're here to help.</p>
-            <p><strong>Biolyse Pharma Corp.</strong></p>
-            <p>59 Welland Vale Road<br>
-                St. Catharines, Ontario<br>
-                Canada L2S 3Y2</p>
-            <p><strong>Phone:</strong> <a href="tel:+19056878008">(905) 687-8008</a><br>
-                <strong>Toll Free:</strong> <a href="tel:+18772341880">1-877-234-1880</a><br>
-                <strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#c5acaba3aa85a7acaaa9bcb6a0eba6aaa8"><span class="__cf_email__" data-cfemail="90f9fef6ffd0f2f9fffce9e3f5bef3fffd">[email&#160;protected]</span></a>
+            <h3>Privacy Questions or Concerns?</h3>
+            <p>If you have questions about how we handle your personal information, please reach out:</p>
+            <p><strong>Biolyse Pharma Corp.</strong><br>
+            59 Welland Vale Road<br>
+            St. Catharines, Ontario<br>
+            Canada L2S 3Y2</p>
+            <p>
+                <strong>Phone:</strong> (905) 687-8008<br>
+                <strong>Toll Free:</strong> 1-877-234-1880<br>
+                <strong>Fax:</strong> (905) 687-4923<br>
+                <strong>Email:</strong> <a href="mailto:info@biolyse.com">info@biolyse.com</a>
             </p>
         </div>
 
@@ -617,9 +586,9 @@
             <div class="footer-section">
                 <h3>Contact</h3>
                 <p>Phone: (905) 687 8008<br>
-                    Toll Free: 1 877 234 1880<br>
-                    Fax: 905 687 4923<br>
-                    Email: <a href="/cdn-cgi/l/email-protection#076e69616847656e686b7e74622964686a"><span class="__cf_email__" data-cfemail="adc4c3cbc2edcfc4c2c1d4dec883cec2c0">[email&#160;protected]</span></a></p>
+                Toll Free: 1 877 234 1880<br>
+                Fax: 905 687 4923<br>
+                Email: info&#64;biol<!--obfu-->yse&#46;com</p>
             </div>
             <div class="footer-section">
                 <h3>More Links</h3>
@@ -627,70 +596,60 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2024 Biolyse Pharma Corp.</p>
+            <p>&copy; 2025 Biolyse Pharma Corp.</p>
         </div>
     </footer>
-        
-        <!-- Mobile Menu JavaScript -->
-        <script>
-            const hamburger = document.getElementById('hamburger');
-            const navMenu = document.getElementById('navMenu');
-            const dropdownItems = document.querySelectorAll('[data-dropdown]');
 
-            // Toggle mobile menu
-            hamburger.addEventListener('click', () => {
-                hamburger.classList.toggle('active');
-                navMenu.classList.toggle('active');
-            });
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
 
-            // Close menu when clicking a link (except dropdown parent)
-            document.querySelectorAll('.nav-link').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        const parent = link.parentElement;
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
 
-                        if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
-                            if (parent.classList.contains('dropdown-open')) {
-                                // Second tap — follow the link
-                                hamburger.classList.remove('active');
-                                navMenu.classList.remove('active');
-                                parent.classList.remove('dropdown-open');
-                                window.location.href = link.href;
-                            } else {
-                                // First tap — open the dropdown
-                                e.preventDefault();
-                                parent.classList.toggle('dropdown-open');
-                            }
-                        } else if (!parent.hasAttribute('data-dropdown')) {
-                            hamburger.classList.remove('active');
-                            navMenu.classList.remove('active');
-                        }
-                    });
-                });
-
-            // Close menu when clicking dropdown links
-            document.querySelectorAll('.dropdown-menu a').forEach(link => {
-                link.addEventListener('click', () => {
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const parent = link.parentElement;
+                if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
+                    if (parent.classList.contains('dropdown-open')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        parent.classList.remove('dropdown-open');
+                        window.location.href = link.href;
+                    } else {
+                        e.preventDefault();
+                        parent.classList.toggle('dropdown-open');
+                    }
+                } else if (!parent.hasAttribute('data-dropdown')) {
                     hamburger.classList.remove('active');
                     navMenu.classList.remove('active');
-                    document.querySelectorAll('.dropdown-open').forEach(item => {
-                        item.classList.remove('dropdown-open');
-                    });
-                });
-            });
-
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', (e) => {
-                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    hamburger.classList.remove('active');
-                    navMenu.classList.remove('active');
-                    document.querySelectorAll('.dropdown-open').forEach(item => {
-                        item.classList.remove('dropdown-open');
-                    });
                 }
             });
-        </script>
+        });
 
-    <!-- Note: Form submission JavaScript will be added later -->
-    <!--<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-->
-    </body>
+        document.querySelectorAll('.dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            }
+        });
+    </script>
+
+</body>
 </html>

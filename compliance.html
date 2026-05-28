@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regulatory Compliance - Biolyse Pharma Corp.</title>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #ffffff;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    padding: 10px 20px;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 100px;
+    width: auto;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin-left: auto;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    display: block;
+    padding: 20px 20px;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #f0f0f0;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 220px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border: 1px solid #e0e0e0;
+}
+
+@media (min-width: 769px) {
+    .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 600px;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('images/services.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 48px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* Page Content */
+.page-content {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* Intro Section */
+.intro-section {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.intro-section h2 {
+    font-size: 36px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.intro-section p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    max-width: 900px;
+    margin: 0 auto 20px;
+}
+
+/* Compliance Section — mirrors .service-section */
+.compliance-section {
+    margin: 80px 0;
+    padding: 60px 0;
+    scroll-margin-top: 80px;
+}
+
+.compliance-section:not(:last-child) {
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.compliance-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.compliance-header h2 {
+    font-size: 42px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.compliance-header p {
+    font-size: 20px;
+    color: #666;
+    font-style: italic;
+}
+
+/* Two-column layout — mirrors .service-content */
+.compliance-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.compliance-content.reverse {
+    direction: rtl;
+}
+
+.compliance-content.reverse > * {
+    direction: ltr;
+}
+
+.compliance-text h3 {
+    font-size: 28px;
+    color: #04481e;
+    margin-bottom: 20px;
+}
+
+.compliance-text p {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.compliance-text ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.compliance-text ul li {
+    padding: 12px 0;
+    padding-left: 35px;
+    position: relative;
+    font-size: 18px;
+    color: #555;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.compliance-text ul li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #04481e;
+    font-weight: bold;
+    font-size: 22px;
+}
+
+/* Regulation badge panel — replaces service image */
+.compliance-badge-panel {
+    background: #f7fbf8;
+    border: 2px solid #e0ede4;
+    border-radius: 8px;
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.regulation-badge {
+    background: white;
+    border-left: 5px solid #04481e;
+    border-radius: 4px;
+    padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.regulation-badge .badge-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #04481e;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+}
+
+.regulation-badge .badge-title {
+    font-size: 17px;
+    font-weight: bold;
+    color: #222;
+    margin-bottom: 4px;
+}
+
+.regulation-badge .badge-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Feature Grid — mirrors .feature-grid */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.feature-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    font-size: 22px;
+    color: #04481e;
+    margin-bottom: 15px;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* CTA — mirrors .cta-section */
+.cta-section {
+    background: linear-gradient(135deg, #04481e 0%, #04481e 100%);
+    color: white;
+    padding: 60px 40px;
+    text-align: center;
+    margin: 80px 0;
+    border-radius: 8px;
+}
+
+.cta-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.cta-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 40px;
+    background-color: white;
+    color: #04481e;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+.footer {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 40px 20px 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #04481e;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.footer-section p,
+.footer-section a {
+    color: #ccc;
+    text-decoration: none;
+    line-height: 1.8;
+}
+
+.footer-section a:hover {
+    color: #4a90e2;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+    color: #888;
+}
+
+/* Hamburger */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-container {
+        padding: 0 20px;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        flex-direction: column;
+        background-color: #ffffff;
+        width: 100%;
+        text-align: left;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0,0,0,0.05);
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        margin: 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        padding: 15px 20px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        border: none;
+        background-color: #f9f9f9;
+    }
+
+    .nav-item.dropdown-open .dropdown-menu {
+        display: block;
+    }
+
+    .dropdown-menu a {
+        padding-left: 40px;
+        font-size: 14px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .hero {
+        height: 400px !important;
+    }
+
+    .hero h1 {
+        font-size: 32px !important;
+        padding: 0 20px;
+    }
+
+    .compliance-content,
+    .compliance-content.reverse {
+        grid-template-columns: 1fr !important;
+        direction: ltr !important;
+    }
+
+    .compliance-header h2 {
+        font-size: 28px !important;
+    }
+
+    .intro-section h2 {
+        font-size: 26px !important;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr !important;
+    }
+
+    .cta-section h2 {
+        font-size: 24px !important;
+    }
+
+    .cta-button {
+        padding: 12px 30px;
+        font-size: 16px !important;
+    }
+}
+</style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo2.png" alt="Biolyse Logo">
+            </a>
+
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="about.html" class="nav-link">About Us</a>
+                    <div class="dropdown-menu">
+                        <a href="about.html#mission">Mission</a>
+                        <a href="about.html#future">Future</a>
+                        <a href="about.html#history">History</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="services.html" class="nav-link">Services</a>
+                    <div class="dropdown-menu">
+                        <a href="services.html#contract-manufacturing">Contract Manufacturing</a>
+                        <a href="services.html#research-and-development">Research and Development</a>
+                        <a href="services.html#capabilities">Capabilities</a>
+                        <a href="services.html#partnership">Partnership</a>
+                    </div>
+                </li>
+                <li class="nav-item" data-dropdown>
+                    <a href="products.html" class="nav-link">Products</a>
+                    <div class="dropdown-menu">
+                        <a href="products.html#paclitaxel">Paclitaxel</a>
+                        <a href="products.html#docetaxel">Docetaxel</a>
+                        <a href="products.html#fluorouracil">Fluorouracil</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a href="compliance.html" class="nav-link">Compliance</a>
+                </li>
+                <li class="nav-item">
+                    <a href="news.html" class="nav-link">News and Careers</a>
+                </li>
+                <li class="nav-item">
+                    <a href="team.html" class="nav-link">Meet Our Team</a>
+                </li>
+                <li class="nav-item">
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div>
+            <h1>Regulatory Compliance</h1>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="page-content">
+
+        <!-- Introduction -->
+        <div class="intro-section">
+            <h2>Committed to the Highest Standards</h2>
+            <p>At Biolyse Pharma Corp., regulatory compliance is not simply an obligation — it is a foundational principle that guides every stage of our operations, from laboratory development through to commercial manufacturing.</p>
+            <p>We operate under the oversight of Health Canada and adhere strictly to Canadian pharmaceutical regulations. Our compliance framework ensures that every product we manufacture meets rigorous safety, efficacy, and quality standards before it reaches patients and healthcare providers.</p>
+        </div>
+
+        <!-- GMP Section -->
+        <section id="gmp" class="compliance-section">
+            <div class="compliance-header">
+                <h2>Good Manufacturing Practices (GMP)</h2>
+                <p>Meeting and Exceeding cGMP Standards at Every Stage</p>
+            </div>
+
+            <div class="compliance-content">
+                <div class="compliance-badge-panel">
+                    <div class="regulation-badge">
+                        <div class="badge-label">Health Canada</div>
+                        <div class="badge-title">Division 2, Part C — Food and Drug Regulations</div>
+                        <div class="badge-desc">Governs the manufacturing, packaging, labelling, and testing of drugs sold in Canada, including sterile injectables.</div>
+                    </div>
+                    <div class="regulation-badge">
+                        <div class="badge-label">Health Canada Guidance</div>
+                        <div class="badge-title">GUI-0001 — Good Manufacturing Practices Guidelines</div>
+                        <div class="badge-desc">The primary GMP guideline for pharmaceutical manufacturers in Canada, aligned with ICH Q7 and PIC/S standards.</div>
+                    </div>
+                    <div class="regulation-badge">
+                        <div class="badge-label">ICH Harmonization</div>
+                        <div class="badge-title">ICH Q7 — Active Pharmaceutical Ingredients</div>
+                        <div class="badge-desc">International guidelines for GMP of APIs, adopted by Health Canada and applied to Biolyse's manufacturing processes.</div>
+                    </div>
+                </div>
+
+                <div class="compliance-text">
+                    <h3>Current Good Manufacturing Practices</h3>
+                    <p>Biolyse operates cGMP-compliant manufacturing facilities designed to meet the standards set out under the Food and Drug Regulations (Canada) and Health Canada's GMP Guidelines (GUI-0001). Our facilities are subject to inspection by Health Canada's Health Products and Food Branch Inspectorate.</p>
+                    <p>cGMP compliance governs all aspects of our production environment — from equipment qualification and environmental monitoring to personnel training and documentation control.</p>
+                    <ul>
+                        <li>Facility design and environmental controls validated to cGMP standards</li>
+                        <li>Equipment qualification (IQ, OQ, PQ) and ongoing calibration programs</li>
+                        <li>Cleanroom manufacturing environments for sterile injectable production</li>
+                        <li>Batch record documentation and full traceability for every production run</li>
+                        <li>Mandatory personnel training and competency verification programs</li>
+                        <li>Change control systems governing any modifications to processes or materials</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Drug Licensing Section -->
+        <section id="licensing" class="compliance-section">
+            <div class="compliance-header">
+                <h2>Drug Approval &amp; Licensing</h2>
+                <p>Licensed, Reviewed, and Authorized by Health Canada</p>
+            </div>
+
+            <div class="compliance-content reverse">
+                <div class="compliance-badge-panel">
+                    <div class="regulation-badge">
+                        <div class="badge-label">Health Canada</div>
+                        <div class="badge-title">Establishment Licence (EL)</div>
+                        <div class="badge-desc">Required for all Canadian pharmaceutical manufacturers under Section C.01A of the Food and Drug Regulations. Authorizes Biolyse to fabricate, package, label, and test drug products.</div>
+                    </div>
+                    <div class="regulation-badge">
+                        <div class="badge-label">Health Canada</div>
+                        <div class="badge-title">Drug Identification Number (DIN)</div>
+                        <div class="badge-desc">Each drug product marketed in Canada must hold a DIN issued by Health Canada following a review of safety, efficacy, and quality data.</div>
+                    </div>
+                    <div class="regulation-badge">
+                        <div class="badge-label">Regulatory Pathway</div>
+                        <div class="badge-title">New Drug Submission (NDS) / Abbreviated NDS</div>
+                        <div class="badge-desc">Biolyse supports both originator and generic drug development pathways, navigating the applicable Health Canada submission process for each product.</div>
+                    </div>
+                </div>
+
+                <div class="compliance-text">
+                    <h3>Health Canada Authorization</h3>
+                    <p>All drug products manufactured by Biolyse Pharma Corp. are subject to Health Canada's drug authorization framework under the Food and Drugs Act. No product proceeds to market without the appropriate regulatory authorization in place.</p>
+                    <p>Biolyse holds a valid Establishment Licence issued by Health Canada, which authorizes our facility to conduct pharmaceutical manufacturing activities. This licence is subject to ongoing compliance and periodic renewal.</p>
+                    <ul>
+                        <li>Valid Establishment Licence covering fabrication, packaging, labelling, and testing</li>
+                        <li>DIN authorization for each marketed drug product</li>
+                        <li>Support for NDS and Abbreviated NDS (ANDS) submissions for new and generic products</li>
+                        <li>Post-market change reporting and supplement submissions as required</li>
+                        <li>Compliance with Health Canada's labelling and packaging regulations</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quality Assurance Section -->
+        <section id="quality" class="compliance-section">
+            <div class="compliance-header">
+                <h2>Quality Assurance Systems</h2>
+                <p>A Pharmaceutical Quality System Built on ICH Q10 Principles</p>
+            </div>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h3>Standard Operating Procedures</h3>
+                    <p>All manufacturing and laboratory operations are governed by controlled SOPs. Documents are version-controlled, reviewed on a defined schedule, and accessible only through our document management system.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔬</div>
+                    <h3>Analytical Testing &amp; Release</h3>
+                    <p>Products undergo rigorous in-process and final release testing against approved specifications. Test methods are validated in accordance with ICH Q2(R1) guidelines before use in release or stability testing.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📦</div>
+                    <h3>Supplier Qualification</h3>
+                    <p>Raw material suppliers are assessed and approved through a formal qualification process. Materials are tested upon receipt and released only after meeting defined acceptance criteria.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Deviation &amp; CAPA Management</h3>
+                    <p>All deviations from established procedures are documented, investigated, and resolved through a formal Corrective and Preventive Action (CAPA) system to prevent recurrence.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Stability Programs</h3>
+                    <p>Ongoing and real-time stability studies are conducted under ICH Q1A(R2) conditions to support shelf-life assignments and detect any product degradation trends over time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🗂️</div>
+                    <h3>Internal Audit Program</h3>
+                    <p>Scheduled internal audits assess compliance across all departments. Findings are tracked to closure and reviewed by senior management as part of the annual product quality review process.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Environmental & Safety Section -->
+        <section id="environmental" class="compliance-section">
+            <div class="compliance-header">
+                <h2>Environmental &amp; Workplace Safety</h2>
+                <p>Responsible Operations Under Ontario and Federal Regulations</p>
+            </div>
+
+            <div class="compliance-content">
+                <div class="compliance-badge-panel">
+                    <div class="regulation-badge">
+                        <div class="badge-label">Ontario Regulation</div>
+                        <div class="badge-title">Occupational Health and Safety Act (OHSA)</div>
+                        <div class="badge-desc">Governs workplace health and safety obligations for all Ontario employers, including hazard identification, worker training, and safe handling of pharmaceutical compounds.</div>
+                    </div>
+                    <div class="regulation-badge">
+                        <div class="badge-label">Federal</div>
+                        <div class="badge-title">Canadian Environmental Protection Act (CEPA)</div>
+                        <div class="badge-desc">Biolyse manages waste streams and chemical handling in compliance with CEPA and applicable provincial environmental regulations.</div>
+                    </div>
+                    <div class="regulation-badge">
+                        <div class="badge-label">Transport Canada / Health Canada</div>
+                        <div class="badge-title">Transportation of Dangerous Goods (TDG)</div>
+                        <div class="badge-desc">Applicable to the transport of pharmaceutical compounds classified as controlled or hazardous goods under the TDG Regulations.</div>
+                    </div>
+                </div>
+
+                <div class="compliance-text">
+                    <h3>Safety and Environmental Responsibility</h3>
+                    <p>Biolyse Pharma Corp. operates in compliance with Ontario's Occupational Health and Safety Act and all applicable federal and provincial environmental regulations. We recognize that responsible pharmaceutical manufacturing extends beyond product quality to include the safety of our people and our community.</p>
+                    <p>Pharmaceutical manufacturing involves potent compounds, solvents, and controlled substances that require careful handling and disposal. Our environmental and safety programs are designed to minimize risk at every stage.</p>
+                    <ul>
+                        <li>Hazard identification and risk assessments for all manufacturing processes</li>
+                        <li>Controlled substance handling in compliance with the Controlled Drugs and Substances Act (CDSA)</li>
+                        <li>Pharmaceutical waste disposal through licensed third-party waste contractors</li>
+                        <li>Workplace safety training for all staff including WHMIS 2015 (GHS) compliance</li>
+                        <li>Environmental monitoring and spill prevention programs</li>
+                        <li>Joint Health and Safety Committee (JHSC) operating as required under OHSA</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CTA -->
+    <div class="page-content">
+        <div class="cta-section">
+            <h2>Questions About Our Compliance Framework?</h2>
+            <p>Our regulatory and quality teams are available to discuss compliance requirements, audit requests, or partnership due diligence.</p>
+            <a href="contact.html" class="cta-button">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Business Hours</h3>
+                <p>Monday – Friday<br>08:30AM – 05:30PM</p>
+            </div>
+            <div class="footer-section">
+                <h3>Address</h3>
+                <p>59 Welland Vale rd.<br>St Catharines Ontario.<br>Canada L2S 3Y2</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Phone: (905) 687 8008<br>
+                Toll Free: 1 877 234 1880<br>
+                Fax: 905 687 4923<br>
+                Email: info&#64;biol<!--obfu-->yse&#46;com</p>
+            </div>
+            <div class="footer-section">
+                <h3>More Links</h3>
+                <p><a href="privacy-policy.html">Privacy Policy</a><br>
+                <a href="compliance.html">Regulatory Compliance</a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Biolyse Pharma Corp.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const parent = link.parentElement;
+                if (window.innerWidth <= 768 && parent.hasAttribute('data-dropdown')) {
+                    if (parent.classList.contains('dropdown-open')) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                        parent.classList.remove('dropdown-open');
+                        window.location.href = link.href;
+                    } else {
+                        e.preventDefault();
+                        parent.classList.toggle('dropdown-open');
+                    }
+                } else if (!parent.hasAttribute('data-dropdown')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
+
+        document.querySelectorAll('.dropdown-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.querySelectorAll('.dropdown-open').forEach(item => {
+                    item.classList.remove('dropdown-open');
+                });
+            }
+        });
+    </script>
+
+</body>
+</html>
